@@ -35,7 +35,7 @@
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSaveClass = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,12 +44,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxEMail = new System.Windows.Forms.TextBox();
+            this.textBoxVK = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.labelErrorSurname = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.labelErrorName = new System.Windows.Forms.Label();
+            this.labelErrorBirthday = new System.Windows.Forms.Label();
+            this.labelErrorPhone = new System.Windows.Forms.Label();
+            this.labelErrorEMail = new System.Windows.Forms.Label();
+            this.labelErrorVK = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +79,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(905, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1295, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,15 +110,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Find:";
             // 
-            // button1
+            // buttonSaveClass
             // 
-            this.button1.Location = new System.Drawing.Point(19, 643);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 20);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSaveClass.Location = new System.Drawing.Point(12, 612);
+            this.buttonSaveClass.Name = "buttonSaveClass";
+            this.buttonSaveClass.Size = new System.Drawing.Size(170, 32);
+            this.buttonSaveClass.TabIndex = 5;
+            this.buttonSaveClass.Text = "Сохранить данные";
+            this.buttonSaveClass.UseVisualStyleBackColor = true;
+            this.buttonSaveClass.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -174,40 +181,41 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "vk.com:";
             // 
-            // textBox2
+            // textBoxSurname
             // 
-            this.textBox2.Location = new System.Drawing.Point(414, 108);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(368, 22);
-            this.textBox2.TabIndex = 13;
+            this.textBoxSurname.Location = new System.Drawing.Point(414, 108);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(368, 22);
+            this.textBoxSurname.TabIndex = 13;
+            this.textBoxSurname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox3
+            // textBoxName
             // 
-            this.textBox3.Location = new System.Drawing.Point(414, 148);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(368, 22);
-            this.textBox3.TabIndex = 14;
+            this.textBoxName.Location = new System.Drawing.Point(414, 148);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(368, 22);
+            this.textBoxName.TabIndex = 14;
             // 
-            // textBox4
+            // textBoxPhone
             // 
-            this.textBox4.Location = new System.Drawing.Point(414, 232);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(368, 22);
-            this.textBox4.TabIndex = 15;
+            this.textBoxPhone.Location = new System.Drawing.Point(414, 232);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(368, 22);
+            this.textBoxPhone.TabIndex = 15;
             // 
-            // textBox5
+            // textBoxEMail
             // 
-            this.textBox5.Location = new System.Drawing.Point(414, 273);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(368, 22);
-            this.textBox5.TabIndex = 16;
+            this.textBoxEMail.Location = new System.Drawing.Point(414, 273);
+            this.textBoxEMail.Name = "textBoxEMail";
+            this.textBoxEMail.Size = new System.Drawing.Size(368, 22);
+            this.textBoxEMail.TabIndex = 16;
             // 
-            // textBox6
+            // textBoxVK
             // 
-            this.textBox6.Location = new System.Drawing.Point(414, 309);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(368, 22);
-            this.textBox6.TabIndex = 17;
+            this.textBoxVK.Location = new System.Drawing.Point(414, 309);
+            this.textBoxVK.Name = "textBoxVK";
+            this.textBoxVK.Size = new System.Drawing.Size(368, 22);
+            this.textBoxVK.TabIndex = 17;
             // 
             // dateTimePicker1
             // 
@@ -217,17 +225,95 @@
             this.dateTimePicker1.TabIndex = 18;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // labelErrorSurname
+            // 
+            this.labelErrorSurname.AutoSize = true;
+            this.labelErrorSurname.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorSurname.Location = new System.Drawing.Point(801, 108);
+            this.labelErrorSurname.Name = "labelErrorSurname";
+            this.labelErrorSurname.Size = new System.Drawing.Size(127, 17);
+            this.labelErrorSurname.TabIndex = 19;
+            this.labelErrorSurname.Text = "labelErrorSurname";
+            this.labelErrorSurname.Click += new System.EventHandler(this.labelErrorSurname_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(444, 384);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(224, 68);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Проверить значения";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // labelErrorName
+            // 
+            this.labelErrorName.AutoSize = true;
+            this.labelErrorName.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorName.Location = new System.Drawing.Point(801, 148);
+            this.labelErrorName.Name = "labelErrorName";
+            this.labelErrorName.Size = new System.Drawing.Size(107, 17);
+            this.labelErrorName.TabIndex = 21;
+            this.labelErrorName.Text = "labelErrorName";
+            // 
+            // labelErrorBirthday
+            // 
+            this.labelErrorBirthday.AutoSize = true;
+            this.labelErrorBirthday.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorBirthday.Location = new System.Drawing.Point(801, 188);
+            this.labelErrorBirthday.Name = "labelErrorBirthday";
+            this.labelErrorBirthday.Size = new System.Drawing.Size(122, 17);
+            this.labelErrorBirthday.TabIndex = 22;
+            this.labelErrorBirthday.Text = "labelErrorBirthday";
+            // 
+            // labelErrorPhone
+            // 
+            this.labelErrorPhone.AutoSize = true;
+            this.labelErrorPhone.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorPhone.Location = new System.Drawing.Point(801, 237);
+            this.labelErrorPhone.Name = "labelErrorPhone";
+            this.labelErrorPhone.Size = new System.Drawing.Size(111, 17);
+            this.labelErrorPhone.TabIndex = 23;
+            this.labelErrorPhone.Text = "labelErrorPhone";
+            // 
+            // labelErrorEMail
+            // 
+            this.labelErrorEMail.AutoSize = true;
+            this.labelErrorEMail.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorEMail.Location = new System.Drawing.Point(801, 276);
+            this.labelErrorEMail.Name = "labelErrorEMail";
+            this.labelErrorEMail.Size = new System.Drawing.Size(104, 17);
+            this.labelErrorEMail.TabIndex = 24;
+            this.labelErrorEMail.Text = "labelErrorEMail";
+            // 
+            // labelErrorVK
+            // 
+            this.labelErrorVK.AutoSize = true;
+            this.labelErrorVK.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorVK.Location = new System.Drawing.Point(801, 312);
+            this.labelErrorVK.Name = "labelErrorVK";
+            this.labelErrorVK.Size = new System.Drawing.Size(88, 17);
+            this.labelErrorVK.TabIndex = 25;
+            this.labelErrorVK.Text = "labelErrorVK";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 704);
+            this.ClientSize = new System.Drawing.Size(1295, 704);
+            this.Controls.Add(this.labelErrorVK);
+            this.Controls.Add(this.labelErrorEMail);
+            this.Controls.Add(this.labelErrorPhone);
+            this.Controls.Add(this.labelErrorBirthday);
+            this.Controls.Add(this.labelErrorName);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.labelErrorSurname);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxVK);
+            this.Controls.Add(this.textBoxEMail);
+            this.Controls.Add(this.textBoxPhone);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -235,7 +321,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSaveClass);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.menuStrip1);
@@ -259,7 +345,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSaveClass;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
@@ -268,12 +354,19 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxSurname;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.TextBox textBoxEMail;
+        private System.Windows.Forms.TextBox textBoxVK;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label labelErrorSurname;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labelErrorName;
+        private System.Windows.Forms.Label labelErrorBirthday;
+        private System.Windows.Forms.Label labelErrorPhone;
+        private System.Windows.Forms.Label labelErrorEMail;
+        private System.Windows.Forms.Label labelErrorVK;
     }
 }
 
