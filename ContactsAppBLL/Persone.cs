@@ -6,13 +6,18 @@ namespace ContactsAppBLL
     {
         private string _surname;
         private string _name;
+        private DateTime _birthday;
         private int _age;
         private string _phone;
         private string _eMail;
         private string _vkPage;
         public string Label;
-
-        private bool UpperSymbolsCorrect(string _inComming)
+        /// <summary>
+        /// Проверяет строку на правильность регистра букв, создан для полей имени и фамилии
+        /// </summary>
+        /// <param name="_inComming">Входящая строка для проверки регистра</param>
+        /// <returns>отправляет true если строка не подходит</returns>
+        private bool UpperSymbolsUnCorrect(string _inComming)
         {
             if (_inComming != null)
             {
@@ -38,6 +43,9 @@ namespace ContactsAppBLL
 
             return false;
         }
+        /// <summary>
+        /// Фамилия
+        /// </summary>
         public string Surname
         {
             get { return _surname; }
@@ -49,7 +57,7 @@ namespace ContactsAppBLL
                     Label = "Заполните поле фамилия";
                     //throw new ArgumentException("Заполните параметр Фамилия");
                 }
-                else if (UpperSymbolsCorrect(value))
+                else if (UpperSymbolsUnCorrect(value))
                 {
                     Label = "Заполните корректно поле фамилия";
                 }
@@ -60,7 +68,9 @@ namespace ContactsAppBLL
                 }
             }
         }
-
+        /// <summary>
+        /// имя
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -72,7 +82,7 @@ namespace ContactsAppBLL
                     Label = "Заполните поле Имя";
                     //  throw new ArgumentException("Заполните параметр Имя");
                 }
-                else if (UpperSymbolsCorrect(value))
+                else if (UpperSymbolsUnCorrect(value))
                 {
                     Label = "Заполните корректно поле имя";
                 }
@@ -82,6 +92,9 @@ namespace ContactsAppBLL
                 }
             }
         }
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
         public int Age
         {
             get { return _age; }
@@ -99,21 +112,31 @@ namespace ContactsAppBLL
             }
 
         }
-
+        /// <summary>
+        /// Метод проверки строки на наличие в ней букв
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private Boolean IsSymbolContains(string input)
         {
-            for (int i = 0; i < input.Length; i++)
+            if (input != null)
             {
-
-                if (char.IsLetter(input[i]))
+                for (int i = 0; i < input.Length; i++)
                 {
-                    return true;
-                }
 
+                    if (char.IsLetter(input[i]))
+                    {
+                        return true;
+                    }
+
+                }
             }
 
             return false;
         }
+        /// <summary>
+        /// Телефон
+        /// </summary>
         public string Phone
         {
             get { return _phone; }
@@ -136,7 +159,9 @@ namespace ContactsAppBLL
                 }
             }
         }
-
+        /// <summary>
+        /// страница в социальных сетях
+        /// </summary>
         public string VkPage
         {
             get { return _vkPage; }
@@ -154,7 +179,9 @@ namespace ContactsAppBLL
                 }
             }
         }
-
+        /// <summary>
+        /// Электронная почта
+        /// </summary>
         public string EMail
         {
             get { return _eMail;}
