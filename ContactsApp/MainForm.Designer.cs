@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxContact = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonSaveClass = new System.Windows.Forms.Button();
+            this.buttonCreateNewContact = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +52,7 @@
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxEMail = new System.Windows.Forms.TextBox();
             this.textBoxVK = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeBirthDay = new System.Windows.Forms.DateTimePicker();
             this.labelErrorSurname = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.labelErrorName = new System.Windows.Forms.Label();
@@ -57,20 +60,21 @@
             this.labelErrorPhone = new System.Windows.Forms.Label();
             this.labelErrorEMail = new System.Windows.Forms.Label();
             this.labelErrorVK = new System.Windows.Forms.Label();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonChangeParamInContact = new System.Windows.Forms.Button();
+            this.buttonDeleteContact = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listBoxContact
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 74);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(275, 532);
-            this.listBox1.TabIndex = 0;
+            this.listBoxContact.FormattingEnabled = true;
+            this.listBoxContact.ItemHeight = 16;
+            this.listBoxContact.Location = new System.Drawing.Point(12, 74);
+            this.listBoxContact.Name = "listBoxContact";
+            this.listBoxContact.Size = new System.Drawing.Size(275, 532);
+            this.listBoxContact.TabIndex = 0;
+            this.listBoxContact.SelectedIndexChanged += new System.EventHandler(this.listBoxContact_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -94,6 +98,20 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.editToolStripMenuItem.Text = "File";
             // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
@@ -102,9 +120,17 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // label2
             // 
@@ -115,15 +141,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Find:";
             // 
-            // buttonSaveClass
+            // buttonCreateNewContact
             // 
-            this.buttonSaveClass.Location = new System.Drawing.Point(12, 612);
-            this.buttonSaveClass.Name = "buttonSaveClass";
-            this.buttonSaveClass.Size = new System.Drawing.Size(170, 32);
-            this.buttonSaveClass.TabIndex = 5;
-            this.buttonSaveClass.Text = "Сохранить данные";
-            this.buttonSaveClass.UseVisualStyleBackColor = true;
-            this.buttonSaveClass.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCreateNewContact.Location = new System.Drawing.Point(12, 612);
+            this.buttonCreateNewContact.Name = "buttonCreateNewContact";
+            this.buttonCreateNewContact.Size = new System.Drawing.Size(91, 33);
+            this.buttonCreateNewContact.TabIndex = 5;
+            this.buttonCreateNewContact.Text = "Создать";
+            this.buttonCreateNewContact.UseVisualStyleBackColor = true;
+            this.buttonCreateNewContact.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -222,13 +248,13 @@
             this.textBoxVK.Size = new System.Drawing.Size(368, 22);
             this.textBoxVK.TabIndex = 17;
             // 
-            // dateTimePicker1
+            // dateTimeBirthDay
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(414, 188);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(212, 22);
-            this.dateTimePicker1.TabIndex = 18;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimeBirthDay.Location = new System.Drawing.Point(414, 188);
+            this.dateTimeBirthDay.Name = "dateTimeBirthDay";
+            this.dateTimeBirthDay.Size = new System.Drawing.Size(212, 22);
+            this.dateTimeBirthDay.TabIndex = 18;
+            this.dateTimeBirthDay.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // labelErrorSurname
             // 
@@ -301,25 +327,32 @@
             this.labelErrorVK.TabIndex = 25;
             this.labelErrorVK.Text = "labelErrorVK";
             // 
-            // loadToolStripMenuItem
+            // buttonChangeParamInContact
             // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            this.buttonChangeParamInContact.CausesValidation = false;
+            this.buttonChangeParamInContact.Location = new System.Drawing.Point(104, 612);
+            this.buttonChangeParamInContact.Name = "buttonChangeParamInContact";
+            this.buttonChangeParamInContact.Size = new System.Drawing.Size(91, 33);
+            this.buttonChangeParamInContact.TabIndex = 26;
+            this.buttonChangeParamInContact.Text = "Изменить";
+            this.buttonChangeParamInContact.UseVisualStyleBackColor = true;
             // 
-            // saveToolStripMenuItem
+            // buttonDeleteContact
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.buttonDeleteContact.Location = new System.Drawing.Point(196, 612);
+            this.buttonDeleteContact.Name = "buttonDeleteContact";
+            this.buttonDeleteContact.Size = new System.Drawing.Size(91, 33);
+            this.buttonDeleteContact.TabIndex = 27;
+            this.buttonDeleteContact.Text = "Удалить";
+            this.buttonDeleteContact.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 704);
+            this.Controls.Add(this.buttonDeleteContact);
+            this.Controls.Add(this.buttonChangeParamInContact);
             this.Controls.Add(this.labelErrorVK);
             this.Controls.Add(this.labelErrorEMail);
             this.Controls.Add(this.labelErrorPhone);
@@ -327,7 +360,7 @@
             this.Controls.Add(this.labelErrorName);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.labelErrorSurname);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimeBirthDay);
             this.Controls.Add(this.textBoxVK);
             this.Controls.Add(this.textBoxEMail);
             this.Controls.Add(this.textBoxPhone);
@@ -340,9 +373,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.buttonSaveClass);
+            this.Controls.Add(this.buttonCreateNewContact);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxContact);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -357,14 +390,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Button buttonSaveClass;
+        private System.Windows.Forms.Button buttonCreateNewContact;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
@@ -378,7 +409,7 @@
         private System.Windows.Forms.TextBox textBoxPhone;
         private System.Windows.Forms.TextBox textBoxEMail;
         private System.Windows.Forms.TextBox textBoxVK;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimeBirthDay;
         private System.Windows.Forms.Label labelErrorSurname;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label labelErrorName;
@@ -388,6 +419,10 @@
         private System.Windows.Forms.Label labelErrorVK;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button buttonChangeParamInContact;
+        private System.Windows.Forms.Button buttonDeleteContact;
+        public System.Windows.Forms.ListBox listBoxContact;
     }
 }
 

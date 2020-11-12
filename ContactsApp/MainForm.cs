@@ -10,11 +10,20 @@ namespace ContactsApp
     public partial class MainForm : Form
     {
         Person test = new Person();
+
+        private Project _project = new Project();
+
+        public Project Project
+        {
+            get => _project;
+            set => _project = value;
+        }
+
         public MainForm()
         {
             InitializeComponent();
         }
-
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
             labelErrorName.Text = null;
@@ -27,9 +36,16 @@ namespace ContactsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var names = new Dictionary<string, Person>();
-            string _saveName = "jopa";
-            names[_saveName] = new Person();
+            AddContactForm addContactForm = new AddContactForm();
+            addContactForm.Person = new Person();
+            addContactForm.ShowDialog();
+            if (addContactForm.CorrectExit)
+            {
+                var updatedContact = addContactForm.Person;
+                Project.Persons.Add(updatedContact);
+                listBoxContact.Items.Add(updatedContact.Surname);
+            }
+            
 
         }
 
@@ -65,6 +81,7 @@ namespace ContactsApp
             labelErrorEMail.Text = test.Label;
             test.VkPage = textBoxVK.Text;
             labelErrorVK.Text = test.Label;
+            test.BirthDay = dateTimeBirthDay.Value;
 
 
         }
@@ -93,6 +110,18 @@ namespace ContactsApp
             {
                 serializer.Serialize(writer, test);
             }
+        }
+
+        private void listBoxContact_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Person tempPerson = new Person();
+            tempPerson = Project.Persons[listBoxContact.SelectedIndex];
+            textBoxSurname.Text = tempPerson.Surname;
+            textBoxName.Text = tempPerson.Name;
+            dateTimeBirthDay.Value = tempPerson.BirthDay;
+            textBoxEMail.Text = tempPerson.EMail;
+            textBoxPhone.Text = tempPerson.Phone;
+            textBoxVK.Text = tempPerson.VkPage;
         }
     }
 }

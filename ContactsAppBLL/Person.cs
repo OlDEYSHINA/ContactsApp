@@ -2,30 +2,61 @@
 
 namespace ContactsAppBLL
 {
-    public class Person
+    /// <summary>
+    /// Класс человека, хранит базовую инфомацию о контакте
+    /// </summary>
+    public class Person:ICloneable
     {
+        /// <summary>
+        /// Фамилия
+        /// </summary>
         private string _surname;
+
+        /// <summary>
+        /// Имя
+        /// </summary>
         private string _name;
+        
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
         private DateTime _birthday;
-        private int _age;
+        
+        /// <summary>
+        /// Телефон
+        /// </summary>
         private string _phone;
+        
+        /// <summary>
+        /// Электронная почта
+        /// </summary>
         private string _eMail;
+        
+        /// <summary>
+        /// Страница в социальной сети
+        /// </summary>
         private string _vkPage;
+        
+        /// <summary>
+        /// Строка ошибки при вводе данных
+        /// </summary>
         public string Label;
+
+        public int CountError;
         /// <summary>
         /// Проверяет строку на правильность регистра букв, создан для полей имени и фамилии
         /// </summary>
-        /// <param name="_inComming">Входящая строка для проверки регистра</param>
+        /// <param name="inComming">Входящая строка для проверки регистра</param>
         /// <returns>отправляет true если строка не подходит</returns>
-        private bool UpperSymbolsUnCorrect(string _inComming)
+        private bool UpperSymbolsUnCorrect(string inComming)
         {
-            if (_inComming != null)
+            if (inComming != null)
             {
-                for (var i = 0; i < _inComming.Length; i++)
+                for (var i = 0; i < inComming.Length; i++)
                 {
                     if (i == 0)
                     {
-                        if (char.IsLower(_inComming[i]))
+                        if (char.IsLower(inComming[i]))
                         {
                             return true;
                         }
@@ -33,7 +64,7 @@ namespace ContactsAppBLL
 
                     if (i >= 1)
                     {
-                        if (char.IsUpper(_inComming[i]))
+                        if (char.IsUpper(inComming[i]))
                         {
                             return true;
                         }
@@ -43,6 +74,7 @@ namespace ContactsAppBLL
 
             return false;
         }
+      
         /// <summary>
         /// Фамилия
         /// </summary>
@@ -54,11 +86,13 @@ namespace ContactsAppBLL
                 Label = null;
                 if (value == String.Empty)
                 {
+                    CountError++;
                     Label = "Заполните поле фамилия";
                     //throw new ArgumentException("Заполните параметр Фамилия");
                 }
                 else if (UpperSymbolsUnCorrect(value))
                 {
+                    CountError++;
                     Label = "Заполните корректно поле фамилия";
                 }
                 else
@@ -79,11 +113,13 @@ namespace ContactsAppBLL
                 Label = null;
                 if (value == String.Empty)
                 {
+                    CountError++;
                     Label = "Заполните поле Имя";
                     //  throw new ArgumentException("Заполните параметр Имя");
                 }
                 else if (UpperSymbolsUnCorrect(value))
                 {
+                    CountError++;
                     Label = "Заполните корректно поле имя";
                 }
                 else
@@ -92,26 +128,25 @@ namespace ContactsAppBLL
                 }
             }
         }
+
         /// <summary>
         /// Дата рождения
         /// </summary>
-        public int Age
+        public DateTime BirthDay
         {
-            get { return _age; }
+            get { return _birthday;}
             set
             {
-                Label = null;
-                if (value < 0)
+                if (DateTime.Today < value)
                 {
-                    throw new ArgumentException("Возраст должен быть больше 0, а был" + value);
+                    CountError++;
+                    Label = "Дата рождения не может быть в будущем";
                 }
-                else
-                {
-                    _age = value;
-                }
+                _birthday = value;
             }
-
         }
+    
+
         /// <summary>
         /// Метод проверки строки на наличие в ней букв
         /// </summary>
@@ -134,6 +169,7 @@ namespace ContactsAppBLL
 
             return false;
         }
+
         /// <summary>
         /// Телефон
         /// </summary>
@@ -145,11 +181,13 @@ namespace ContactsAppBLL
                 Label = null;
                 if (value == String.Empty)
                 {
+                    CountError++;
                     Label = "Заполните параметр Телефон";
                     // throw new ArgumentException("Заполните параметр Телефон");
                 }
                 else if (IsSymbolContains(value))
                 {
+                    CountError++;
                     Label = "Параметр Телефон должен содержать только цифры и знак +";
                     //throw new ArgumentException("Параметр Телефон должен содержать только цифры и знак +");
                 }
@@ -170,15 +208,17 @@ namespace ContactsAppBLL
                 Label = null;
                 if (value == String.Empty)
                 {
+                    CountError++;
                     Label = "Заполни параметр vk.com";
                     //throw new ArgumentException("Заполните параметр vk.com");
                 }
                 else
                 {
-                    _name = value;
+                    _vkPage = value;
                 }
             }
         }
+
         /// <summary>
         /// Электронная почта
         /// </summary>
@@ -190,11 +230,26 @@ namespace ContactsAppBLL
                 Label = null;
                 if (value == String.Empty)
                 {
+                    CountError++;
                     Label = "Заполни параметр EMail";
                     //throw new ArgumentException("Заполните параметр Email");
                 }
+
+                _eMail = value;
             }
         }
 
+        public object Clone()
+        {
+            return new Person()
+            {
+                Surname = this.Surname,
+                Name = this.Name,
+                BirthDay = this.BirthDay,
+                Phone = this.Phone,
+                EMail = this.EMail,
+                VkPage = this.VkPage
+            };
+        }
     }
 }
