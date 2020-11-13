@@ -1,5 +1,4 @@
 ﻿using ContactsAppBLL;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -59,8 +58,7 @@ namespace ContactsApp
             {
                 return;
             }
-            Person tempPerson = new Person();
-            tempPerson = Project.Persons[listBoxContact.SelectedIndex];
+            var tempPerson = Project.Persons[listBoxContact.SelectedIndex];
             textBoxSurname.Text = tempPerson.Surname;
             textBoxName.Text = tempPerson.Name;
             dateTimeBirthDay.Value = tempPerson.BirthDay;
