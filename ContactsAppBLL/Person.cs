@@ -5,7 +5,7 @@ namespace ContactsAppBLL
     /// <summary>
     /// Класс человека, хранит базовую инфомацию о контакте
     /// </summary>
-    public class Person:ICloneable
+    public class Person
     {
         /// <summary>
         /// Фамилия
@@ -237,19 +237,6 @@ namespace ContactsAppBLL
 
                 _eMail = value;
             }
-        }
-
-        public object Clone()
-        {
-            return new Person()
-            {
-                Surname = this.Surname,
-                Name = this.Name,
-                BirthDay = this.BirthDay,
-                Phone = this.Phone,
-                EMail = this.EMail,
-                VkPage = this.VkPage
-            };
         }
     }
 }

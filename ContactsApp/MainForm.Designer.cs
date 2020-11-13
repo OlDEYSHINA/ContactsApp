@@ -53,13 +53,6 @@
             this.textBoxEMail = new System.Windows.Forms.TextBox();
             this.textBoxVK = new System.Windows.Forms.TextBox();
             this.dateTimeBirthDay = new System.Windows.Forms.DateTimePicker();
-            this.labelErrorSurname = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.labelErrorName = new System.Windows.Forms.Label();
-            this.labelErrorBirthday = new System.Windows.Forms.Label();
-            this.labelErrorPhone = new System.Windows.Forms.Label();
-            this.labelErrorEMail = new System.Windows.Forms.Label();
-            this.labelErrorVK = new System.Windows.Forms.Label();
             this.buttonChangeParamInContact = new System.Windows.Forms.Button();
             this.buttonDeleteContact = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -85,7 +78,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1295, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(818, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,14 +94,14 @@
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -214,37 +207,48 @@
             // 
             // textBoxSurname
             // 
+            this.textBoxSurname.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxSurname.Location = new System.Drawing.Point(414, 108);
             this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.ReadOnly = true;
             this.textBoxSurname.Size = new System.Drawing.Size(368, 22);
             this.textBoxSurname.TabIndex = 13;
             this.textBoxSurname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBoxName
             // 
+            this.textBoxName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxName.Location = new System.Drawing.Point(414, 148);
             this.textBoxName.Name = "textBoxName";
+            this.textBoxName.ReadOnly = true;
             this.textBoxName.Size = new System.Drawing.Size(368, 22);
             this.textBoxName.TabIndex = 14;
             // 
             // textBoxPhone
             // 
+            this.textBoxPhone.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxPhone.Location = new System.Drawing.Point(414, 232);
             this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.ReadOnly = true;
             this.textBoxPhone.Size = new System.Drawing.Size(368, 22);
             this.textBoxPhone.TabIndex = 15;
             // 
             // textBoxEMail
             // 
+            this.textBoxEMail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxEMail.Location = new System.Drawing.Point(414, 273);
             this.textBoxEMail.Name = "textBoxEMail";
+            this.textBoxEMail.ReadOnly = true;
             this.textBoxEMail.Size = new System.Drawing.Size(368, 22);
             this.textBoxEMail.TabIndex = 16;
+            this.textBoxEMail.TextChanged += new System.EventHandler(this.textBoxEMail_TextChanged);
             // 
             // textBoxVK
             // 
+            this.textBoxVK.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxVK.Location = new System.Drawing.Point(414, 309);
             this.textBoxVK.Name = "textBoxVK";
+            this.textBoxVK.ReadOnly = true;
             this.textBoxVK.Size = new System.Drawing.Size(368, 22);
             this.textBoxVK.TabIndex = 17;
             // 
@@ -255,77 +259,6 @@
             this.dateTimeBirthDay.Size = new System.Drawing.Size(212, 22);
             this.dateTimeBirthDay.TabIndex = 18;
             this.dateTimeBirthDay.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // labelErrorSurname
-            // 
-            this.labelErrorSurname.AutoSize = true;
-            this.labelErrorSurname.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorSurname.Location = new System.Drawing.Point(801, 108);
-            this.labelErrorSurname.Name = "labelErrorSurname";
-            this.labelErrorSurname.Size = new System.Drawing.Size(127, 17);
-            this.labelErrorSurname.TabIndex = 19;
-            this.labelErrorSurname.Text = "labelErrorSurname";
-            this.labelErrorSurname.Click += new System.EventHandler(this.labelErrorSurname_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(444, 384);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(224, 68);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Проверить значения";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // labelErrorName
-            // 
-            this.labelErrorName.AutoSize = true;
-            this.labelErrorName.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorName.Location = new System.Drawing.Point(801, 148);
-            this.labelErrorName.Name = "labelErrorName";
-            this.labelErrorName.Size = new System.Drawing.Size(107, 17);
-            this.labelErrorName.TabIndex = 21;
-            this.labelErrorName.Text = "labelErrorName";
-            // 
-            // labelErrorBirthday
-            // 
-            this.labelErrorBirthday.AutoSize = true;
-            this.labelErrorBirthday.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorBirthday.Location = new System.Drawing.Point(801, 188);
-            this.labelErrorBirthday.Name = "labelErrorBirthday";
-            this.labelErrorBirthday.Size = new System.Drawing.Size(122, 17);
-            this.labelErrorBirthday.TabIndex = 22;
-            this.labelErrorBirthday.Text = "labelErrorBirthday";
-            // 
-            // labelErrorPhone
-            // 
-            this.labelErrorPhone.AutoSize = true;
-            this.labelErrorPhone.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorPhone.Location = new System.Drawing.Point(801, 237);
-            this.labelErrorPhone.Name = "labelErrorPhone";
-            this.labelErrorPhone.Size = new System.Drawing.Size(111, 17);
-            this.labelErrorPhone.TabIndex = 23;
-            this.labelErrorPhone.Text = "labelErrorPhone";
-            // 
-            // labelErrorEMail
-            // 
-            this.labelErrorEMail.AutoSize = true;
-            this.labelErrorEMail.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorEMail.Location = new System.Drawing.Point(801, 276);
-            this.labelErrorEMail.Name = "labelErrorEMail";
-            this.labelErrorEMail.Size = new System.Drawing.Size(104, 17);
-            this.labelErrorEMail.TabIndex = 24;
-            this.labelErrorEMail.Text = "labelErrorEMail";
-            // 
-            // labelErrorVK
-            // 
-            this.labelErrorVK.AutoSize = true;
-            this.labelErrorVK.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorVK.Location = new System.Drawing.Point(801, 312);
-            this.labelErrorVK.Name = "labelErrorVK";
-            this.labelErrorVK.Size = new System.Drawing.Size(88, 17);
-            this.labelErrorVK.TabIndex = 25;
-            this.labelErrorVK.Text = "labelErrorVK";
             // 
             // buttonChangeParamInContact
             // 
@@ -345,21 +278,15 @@
             this.buttonDeleteContact.TabIndex = 27;
             this.buttonDeleteContact.Text = "Удалить";
             this.buttonDeleteContact.UseVisualStyleBackColor = true;
+            this.buttonDeleteContact.Click += new System.EventHandler(this.buttonDeleteContact_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 704);
+            this.ClientSize = new System.Drawing.Size(818, 648);
             this.Controls.Add(this.buttonDeleteContact);
             this.Controls.Add(this.buttonChangeParamInContact);
-            this.Controls.Add(this.labelErrorVK);
-            this.Controls.Add(this.labelErrorEMail);
-            this.Controls.Add(this.labelErrorPhone);
-            this.Controls.Add(this.labelErrorBirthday);
-            this.Controls.Add(this.labelErrorName);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.labelErrorSurname);
             this.Controls.Add(this.dateTimeBirthDay);
             this.Controls.Add(this.textBoxVK);
             this.Controls.Add(this.textBoxEMail);
@@ -379,7 +306,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "ContactsApp";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -410,13 +337,6 @@
         private System.Windows.Forms.TextBox textBoxEMail;
         private System.Windows.Forms.TextBox textBoxVK;
         private System.Windows.Forms.DateTimePicker dateTimeBirthDay;
-        private System.Windows.Forms.Label labelErrorSurname;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label labelErrorName;
-        private System.Windows.Forms.Label labelErrorBirthday;
-        private System.Windows.Forms.Label labelErrorPhone;
-        private System.Windows.Forms.Label labelErrorEMail;
-        private System.Windows.Forms.Label labelErrorVK;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;

@@ -26,12 +26,7 @@ namespace ContactsApp
         
         private void MainForm_Load(object sender, EventArgs e)
         {
-            labelErrorName.Text = null;
-            labelErrorSurname.Text = null;
-            labelErrorBirthday.Text = null;
-            labelErrorEMail.Text = null;
-            labelErrorPhone.Text = null;
-            labelErrorVK.Text = null;
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,15 +67,10 @@ namespace ContactsApp
         private void button2_Click(object sender, EventArgs e)
         {
             test.Surname = textBoxSurname.Text;
-            labelErrorSurname.Text = test.Label;
             test.Name = textBoxName.Text;
-            labelErrorName.Text = test.Label;
             test.Phone = textBoxPhone.Text;
-            labelErrorPhone.Text = test.Label;
             test.EMail = textBoxEMail.Text;
-            labelErrorEMail.Text = test.Label;
             test.VkPage = textBoxVK.Text;
-            labelErrorVK.Text = test.Label;
             test.BirthDay = dateTimeBirthDay.Value;
 
 
@@ -88,32 +78,41 @@ namespace ContactsApp
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Person test = null;
-            //Создаём экземпляр сериализатора
-            JsonSerializer serializer = new JsonSerializer();
-            //Открываем поток для чтения из файла с указанием пути
-            using (StreamReader sr = new StreamReader(@"Contacts.txt"))
-            using (JsonReader reader = new JsonTextReader(sr))
+            Project project = new Project();
             {
-                //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                test = (Person)serializer.Deserialize<Person>(reader);
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.NullValueHandling = NullValueHandling.Include;
+                serializer.TypeNameHandling = TypeNameHandling.All;
+                serializer.Formatting = Formatting.None;
+                using (StreamReader sr = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ContactApp\Contacts.txt"))
+                using (JsonReader reader = new JsonTextReader(sr))
+                {
+                    project = (Project)serializer.Deserialize<Project>(reader);
+                }
             }
-        }
+           }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ContactApp\Contacts.txt");
             JsonSerializer serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            using (StreamWriter sw = new StreamWriter(@"Contacts.txt"))
+            serializer.NullValueHandling = NullValueHandling.Include;
+            serializer.TypeNameHandling = TypeNameHandling.All;
+            serializer.Formatting = Formatting.None;
+            using (StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ContactApp\Contacts.txt"))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, test);
-            }
+                serializer.Serialize(writer, Project);
+            };
         }
 
         private void listBoxContact_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listBoxContact.SelectedIndex == -1)
+            {
+                return;
+            }
             Person tempPerson = new Person();
             tempPerson = Project.Persons[listBoxContact.SelectedIndex];
             textBoxSurname.Text = tempPerson.Surname;
@@ -122,6 +121,28 @@ namespace ContactsApp
             textBoxEMail.Text = tempPerson.EMail;
             textBoxPhone.Text = tempPerson.Phone;
             textBoxVK.Text = tempPerson.VkPage;
+        }
+
+        private void textBoxEMail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Кнопка удаления контакта
+        /// </summary>
+        private void buttonDeleteContact_Click(object sender, EventArgs e)
+        {
+            if (listBoxContact.SelectedIndex == -1)
+            {
+                return;
+            }
+            DialogResult deleteResult = MessageBox.Show("Подтвердите удаление контакта \n Фамилия контакта: " + listBoxContact.Text, "Удаление", MessageBoxButtons.OKCancel);
+            if (deleteResult == DialogResult.OK)
+            {
+                Project.Persons.RemoveAt(listBoxContact.SelectedIndex);
+                listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
+            }
         }
     }
 }
