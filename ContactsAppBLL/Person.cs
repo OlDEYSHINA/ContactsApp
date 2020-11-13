@@ -16,27 +16,27 @@ namespace ContactsAppBLL
         /// Имя
         /// </summary>
         private string _name;
-        
+
         /// <summary>
         /// Дата рождения
         /// </summary>
         private DateTime _birthday;
-        
+
         /// <summary>
         /// Телефон
         /// </summary>
         private string _phone;
-        
+
         /// <summary>
         /// Электронная почта
         /// </summary>
         private string _eMail;
-        
+
         /// <summary>
         /// Страница в социальной сети
         /// </summary>
         private string _vkPage;
-        
+
         /// <summary>
         /// Строка ошибки при вводе данных
         /// </summary>
@@ -74,7 +74,7 @@ namespace ContactsAppBLL
 
             return false;
         }
-      
+
         /// <summary>
         /// Фамилия
         /// </summary>
@@ -134,7 +134,7 @@ namespace ContactsAppBLL
         /// </summary>
         public DateTime BirthDay
         {
-            get { return _birthday;}
+            get { return _birthday; }
             set
             {
                 if (DateTime.Today < value)
@@ -142,10 +142,13 @@ namespace ContactsAppBLL
                     CountError++;
                     Label = "Дата рождения не может быть в будущем";
                 }
-                _birthday = value;
+                else
+                {
+                    _birthday = value;
+                }
             }
         }
-    
+
 
         /// <summary>
         /// Метод проверки строки на наличие в ней букв
@@ -224,7 +227,7 @@ namespace ContactsAppBLL
         /// </summary>
         public string EMail
         {
-            get { return _eMail;}
+            get { return _eMail; }
             set
             {
                 Label = null;

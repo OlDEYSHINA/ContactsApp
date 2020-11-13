@@ -78,7 +78,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(818, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(818, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,27 +88,27 @@
             this.loadToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.editToolStripMenuItem.Text = "File";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(49, 26);
             this.editToolStripMenuItem1.Text = "Edit";
             // 
             // helpToolStripMenuItem
@@ -116,7 +116,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -163,7 +163,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(347, 148);
+            this.label3.Location = new System.Drawing.Point(347, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 17);
             this.label3.TabIndex = 8;
@@ -172,7 +172,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(332, 188);
+            this.label4.Location = new System.Drawing.Point(332, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 9;
@@ -181,7 +181,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(343, 232);
+            this.label5.Location = new System.Drawing.Point(343, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 17);
             this.label5.TabIndex = 10;
@@ -190,7 +190,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(345, 273);
+            this.label6.Location = new System.Drawing.Point(345, 272);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 17);
             this.label6.TabIndex = 11;
@@ -199,7 +199,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(340, 314);
+            this.label7.Location = new System.Drawing.Point(340, 313);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 17);
             this.label7.TabIndex = 12;
@@ -213,7 +213,6 @@
             this.textBoxSurname.ReadOnly = true;
             this.textBoxSurname.Size = new System.Drawing.Size(368, 22);
             this.textBoxSurname.TabIndex = 13;
-            this.textBoxSurname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBoxName
             // 
@@ -227,7 +226,7 @@
             // textBoxPhone
             // 
             this.textBoxPhone.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxPhone.Location = new System.Drawing.Point(414, 232);
+            this.textBoxPhone.Location = new System.Drawing.Point(414, 228);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.ReadOnly = true;
             this.textBoxPhone.Size = new System.Drawing.Size(368, 22);
@@ -236,17 +235,16 @@
             // textBoxEMail
             // 
             this.textBoxEMail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxEMail.Location = new System.Drawing.Point(414, 273);
+            this.textBoxEMail.Location = new System.Drawing.Point(414, 268);
             this.textBoxEMail.Name = "textBoxEMail";
             this.textBoxEMail.ReadOnly = true;
             this.textBoxEMail.Size = new System.Drawing.Size(368, 22);
             this.textBoxEMail.TabIndex = 16;
-            this.textBoxEMail.TextChanged += new System.EventHandler(this.textBoxEMail_TextChanged);
             // 
             // textBoxVK
             // 
             this.textBoxVK.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxVK.Location = new System.Drawing.Point(414, 309);
+            this.textBoxVK.Location = new System.Drawing.Point(414, 308);
             this.textBoxVK.Name = "textBoxVK";
             this.textBoxVK.ReadOnly = true;
             this.textBoxVK.Size = new System.Drawing.Size(368, 22);
@@ -258,7 +256,6 @@
             this.dateTimeBirthDay.Name = "dateTimeBirthDay";
             this.dateTimeBirthDay.Size = new System.Drawing.Size(212, 22);
             this.dateTimeBirthDay.TabIndex = 18;
-            this.dateTimeBirthDay.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // buttonChangeParamInContact
             // 
@@ -307,7 +304,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

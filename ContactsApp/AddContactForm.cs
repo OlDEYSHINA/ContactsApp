@@ -77,7 +77,6 @@ namespace ContactsApp
         private void buttonConfirmAdd_Click(object sender, EventArgs e)
         {
             Person.CountError = 0;
-            CorrectExit = true;
             Person.Surname = textBoxSurname.Text;
             labelErrorSurname.Text = Person.Label;
             Person.Name = textBoxName.Text;
@@ -89,8 +88,10 @@ namespace ContactsApp
             Person.VkPage = textBoxVK.Text;
             labelErrorVK.Text = Person.Label;
             Person.BirthDay = dateTimeBirthDay.Value;
+            labelErrorBirthday.Text = Person.Label;
             if (Person.CountError==0)
             {
+                CorrectExit = true;
                 this.Close();
             }
         }
