@@ -41,20 +41,9 @@
             this.buttonCreateNewContact = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxSurname = new System.Windows.Forms.TextBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
-            this.textBoxEMail = new System.Windows.Forms.TextBox();
-            this.textBoxVK = new System.Windows.Forms.TextBox();
-            this.dateTimeBirthDay = new System.Windows.Forms.DateTimePicker();
             this.buttonChangeParamInContact = new System.Windows.Forms.Button();
             this.buttonDeleteContact = new System.Windows.Forms.Button();
+            this.userControl11 = new ContactsApp.UserControl1();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -151,112 +140,6 @@
             this.textBox1.Size = new System.Drawing.Size(212, 22);
             this.textBox1.TabIndex = 6;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(327, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Surname:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(347, 149);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Name:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(332, 190);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Birthday:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(343, 231);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Phone:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(345, 272);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 17);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "E-mail:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(340, 313);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 17);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "vk.com:";
-            // 
-            // textBoxSurname
-            // 
-            this.textBoxSurname.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxSurname.Location = new System.Drawing.Point(414, 108);
-            this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.ReadOnly = true;
-            this.textBoxSurname.Size = new System.Drawing.Size(368, 22);
-            this.textBoxSurname.TabIndex = 13;
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxName.Location = new System.Drawing.Point(414, 148);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.ReadOnly = true;
-            this.textBoxName.Size = new System.Drawing.Size(368, 22);
-            this.textBoxName.TabIndex = 14;
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxPhone.Location = new System.Drawing.Point(414, 228);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.ReadOnly = true;
-            this.textBoxPhone.Size = new System.Drawing.Size(368, 22);
-            this.textBoxPhone.TabIndex = 15;
-            // 
-            // textBoxEMail
-            // 
-            this.textBoxEMail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxEMail.Location = new System.Drawing.Point(414, 268);
-            this.textBoxEMail.Name = "textBoxEMail";
-            this.textBoxEMail.ReadOnly = true;
-            this.textBoxEMail.Size = new System.Drawing.Size(368, 22);
-            this.textBoxEMail.TabIndex = 16;
-            // 
-            // textBoxVK
-            // 
-            this.textBoxVK.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxVK.Location = new System.Drawing.Point(414, 308);
-            this.textBoxVK.Name = "textBoxVK";
-            this.textBoxVK.ReadOnly = true;
-            this.textBoxVK.Size = new System.Drawing.Size(368, 22);
-            this.textBoxVK.TabIndex = 17;
-            // 
-            // dateTimeBirthDay
-            // 
-            this.dateTimeBirthDay.Location = new System.Drawing.Point(414, 188);
-            this.dateTimeBirthDay.Name = "dateTimeBirthDay";
-            this.dateTimeBirthDay.Size = new System.Drawing.Size(212, 22);
-            this.dateTimeBirthDay.TabIndex = 18;
-            // 
             // buttonChangeParamInContact
             // 
             this.buttonChangeParamInContact.CausesValidation = false;
@@ -266,6 +149,7 @@
             this.buttonChangeParamInContact.TabIndex = 26;
             this.buttonChangeParamInContact.Text = "Изменить";
             this.buttonChangeParamInContact.UseVisualStyleBackColor = true;
+            this.buttonChangeParamInContact.Click += new System.EventHandler(this.buttonChangeParamInContact_Click);
             // 
             // buttonDeleteContact
             // 
@@ -277,25 +161,23 @@
             this.buttonDeleteContact.UseVisualStyleBackColor = true;
             this.buttonDeleteContact.Click += new System.EventHandler(this.buttonDeleteContact_Click);
             // 
+            // userControl11
+            // 
+            this.userControl11.Enabled = false;
+            this.userControl11.Location = new System.Drawing.Point(293, 74);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Contact = null;
+            this.userControl11.Size = new System.Drawing.Size(466, 295);
+            this.userControl11.TabIndex = 28;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 648);
+            this.Controls.Add(this.userControl11);
             this.Controls.Add(this.buttonDeleteContact);
             this.Controls.Add(this.buttonChangeParamInContact);
-            this.Controls.Add(this.dateTimeBirthDay);
-            this.Controls.Add(this.textBoxVK);
-            this.Controls.Add(this.textBoxEMail);
-            this.Controls.Add(this.textBoxPhone);
-            this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.textBoxSurname);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonCreateNewContact);
             this.Controls.Add(this.label2);
@@ -321,24 +203,13 @@
         private System.Windows.Forms.Button buttonCreateNewContact;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxSurname;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxPhone;
-        private System.Windows.Forms.TextBox textBoxEMail;
-        private System.Windows.Forms.TextBox textBoxVK;
-        private System.Windows.Forms.DateTimePicker dateTimeBirthDay;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button buttonChangeParamInContact;
         private System.Windows.Forms.Button buttonDeleteContact;
         public System.Windows.Forms.ListBox listBoxContact;
+        private UserControl1 userControl11;
     }
 }
 

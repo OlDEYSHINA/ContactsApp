@@ -1,6 +1,5 @@
 ﻿using ContactsAppBLL;
 using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ContactsApp
@@ -21,14 +20,14 @@ namespace ContactsApp
             InitializeComponent();
         }
 
-       private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             AddContactForm addContactForm = new AddContactForm();
-            addContactForm.Person = new Person();
+            addContactForm.Contact = new Contact();
             addContactForm.ShowDialog();
             if (addContactForm.CorrectExit)
             {
-                var updatedContact = addContactForm.Person;
+                var updatedContact = addContactForm.Contact;
                 Project.Persons.Add(updatedContact);
                 listBoxContact.Items.Add(updatedContact.Surname);
             }
@@ -36,20 +35,47 @@ namespace ContactsApp
 
         }
 
+        /// <summary>
+        /// Кнопка вызова окна изменения данных контакта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonChangeParamInContact_Click(object sender, EventArgs e)
+        {
+            if (listBoxContact.SelectedIndex == -1)
+            {
+                return;
+            }
+            EditContactForm editContactForm = new EditContactForm();
+            editContactForm.Contact = new Contact();
+            editContactForm.Contact = Project.Persons[listBoxContact.SelectedIndex];
+            editContactForm.ShowDialog();
+            if (editContactForm.CorrectExit)
+            {
+                var updatedContact = editContactForm.Contact;
+                Project.Persons[listBoxContact.SelectedIndex]=updatedContact;
+                listBoxContact.Items.Add(updatedContact.Surname);
+                listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
+            }
+        }
+
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.LoadFromFile();
+            Project = ProjectManager.LoadFromFile();
             listBoxContact.Items.Clear();
-            
+
             foreach (var item in Project.Persons)
             {
                 listBoxContact.Items.Add(item.Surname);
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.SaveToFile(Project);
+            ProjectManager.SaveToFile(Project);
         }
 
         private void listBoxContact_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,12 +85,12 @@ namespace ContactsApp
                 return;
             }
             var tempPerson = Project.Persons[listBoxContact.SelectedIndex];
-            textBoxSurname.Text = tempPerson.Surname;
-            textBoxName.Text = tempPerson.Name;
-            dateTimeBirthDay.Value = tempPerson.BirthDay;
-            textBoxEMail.Text = tempPerson.EMail;
-            textBoxPhone.Text = tempPerson.Phone;
-            textBoxVK.Text = tempPerson.VkPage;
+            userControl11.PutInSurname(tempPerson.Surname);
+            userControl11.PutInName(tempPerson.Name);
+            userControl11.PutInBirthday(tempPerson.BirthDay);
+            userControl11.PutInPhone(tempPerson.Phone);
+            userControl11.PutInEMail(tempPerson.EMail);
+            userControl11.PutInVk(tempPerson.VkPage);
         }
 
         /// <summary>
@@ -83,5 +109,7 @@ namespace ContactsApp
                 listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
             }
         }
+
+       
     }
 }

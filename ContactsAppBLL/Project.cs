@@ -11,7 +11,7 @@ namespace ContactsAppBLL
         /// <summary>
         /// свойство для создания новых контактов
         /// </summary>
-        public List<Person> Persons { get; set; } = new List<Person>();
+        public List<Contact> Persons { get; set; } = new List<Contact>();
     }
     
 }

@@ -5,7 +5,7 @@ namespace ContactsAppBLL
     /// <summary>
     /// Класс человека, хранит базовую инфомацию о контакте
     /// </summary>
-    public class Person
+    public class Contact
     {
         /// <summary>
         /// Фамилия
@@ -37,12 +37,6 @@ namespace ContactsAppBLL
         /// </summary>
         private string _vkPage;
 
-        /// <summary>
-        /// Строка ошибки при вводе данных
-        /// </summary>
-        public string Label;
-
-        public int CountError;
         /// <summary>
         /// Проверяет строку на правильность регистра букв, создан для полей имени и фамилии
         /// </summary>
@@ -76,51 +70,42 @@ namespace ContactsAppBLL
         }
 
         /// <summary>
-        /// Фамилия
+        /// Возвращает и задает параметр Фамилия
         /// </summary>
         public string Surname
         {
             get { return _surname; }
             set
             {
-                Label = null;
                 if (value == String.Empty)
                 {
-                    CountError++;
-                    Label = "Заполните поле фамилия";
-                    //throw new ArgumentException("Заполните параметр Фамилия");
+                    throw new ArgumentException("Заполните параметр Фамилия");
                 }
                 else if (UpperSymbolsUnCorrect(value))
                 {
-                    CountError++;
-                    Label = "Заполните корректно поле фамилия";
+                    throw new ArgumentException("Заполните корректно поле фамилия");
                 }
                 else
                 {
-                    Label = null;
                     _surname = value;
                 }
             }
         }
         /// <summary>
-        /// имя
+        /// Возвращает и задает параметр имя
         /// </summary>
         public string Name
         {
             get { return _name; }
             set
             {
-                Label = null;
                 if (value == String.Empty)
                 {
-                    CountError++;
-                    Label = "Заполните поле Имя";
-                    //  throw new ArgumentException("Заполните параметр Имя");
+                    throw new ArgumentException("Заполните параметр Имя");
                 }
                 else if (UpperSymbolsUnCorrect(value))
                 {
-                    CountError++;
-                    Label = "Заполните корректно поле имя";
+                    throw new ArgumentException("Заполните корректно поле имя");
                 }
                 else
                 {
@@ -130,7 +115,7 @@ namespace ContactsAppBLL
         }
 
         /// <summary>
-        /// Дата рождения
+        /// Возвращает и задает параметр Дата рождения
         /// </summary>
         public DateTime BirthDay
         {
@@ -139,8 +124,7 @@ namespace ContactsAppBLL
             {
                 if (DateTime.Today < value)
                 {
-                    CountError++;
-                    Label = "Дата рождения не может быть в будущем";
+                    throw new ArgumentException("Дата рождения не может быть в будущем");
                 }
                 else
                 {
@@ -148,7 +132,6 @@ namespace ContactsAppBLL
                 }
             }
         }
-
 
         /// <summary>
         /// Метод проверки строки на наличие в ней букв
@@ -169,30 +152,24 @@ namespace ContactsAppBLL
 
                 }
             }
-
             return false;
         }
 
         /// <summary>
-        /// Телефон
+        /// Возвращает и задает параметр Телефон
         /// </summary>
         public string Phone
         {
             get { return _phone; }
             set
             {
-                Label = null;
                 if (value == String.Empty)
                 {
-                    CountError++;
-                    Label = "Заполните параметр Телефон";
-                    // throw new ArgumentException("Заполните параметр Телефон");
+                    throw new ArgumentException("Заполните параметр Телефон");
                 }
                 else if (IsSymbolContains(value))
                 {
-                    CountError++;
-                    Label = "Параметр Телефон должен содержать только цифры и знак +";
-                    //throw new ArgumentException("Параметр Телефон должен содержать только цифры и знак +");
+                    throw new ArgumentException("Параметр Телефон должен содержать только цифры и знак +");
                 }
                 else
                 {
@@ -200,20 +177,18 @@ namespace ContactsAppBLL
                 }
             }
         }
+
         /// <summary>
-        /// страница в социальных сетях
+        /// Возвращает и задает параметр страница в социальных сетях
         /// </summary>
         public string VkPage
         {
             get { return _vkPage; }
             set
             {
-                Label = null;
                 if (value == String.Empty)
                 {
-                    CountError++;
-                    Label = "Заполни параметр vk.com";
-                    //throw new ArgumentException("Заполните параметр vk.com");
+                    throw new ArgumentException("Заполните параметр vk.com");
                 }
                 else
                 {
@@ -223,22 +198,21 @@ namespace ContactsAppBLL
         }
 
         /// <summary>
-        /// Электронная почта
+        /// Возвращает и задает параметр Электронная почта
         /// </summary>
         public string EMail
         {
             get { return _eMail; }
             set
             {
-                Label = null;
                 if (value == String.Empty)
                 {
-                    CountError++;
-                    Label = "Заполни параметр EMail";
-                    //throw new ArgumentException("Заполните параметр Email");
+                    throw new ArgumentException("Заполните параметр Email");
                 }
-
-                _eMail = value;
+                else
+                {
+                    _eMail = value;
+                }
             }
         }
     }

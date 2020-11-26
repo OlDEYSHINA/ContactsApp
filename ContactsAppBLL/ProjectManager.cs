@@ -11,7 +11,7 @@ using Formatting = Newtonsoft.Json.Formatting;
 
 namespace ContactsAppBLL
 {
-    public class FileManager
+    public class ProjectManager
     {
         public static string MainFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"\\ContactApp\\Contacts.txt";
      

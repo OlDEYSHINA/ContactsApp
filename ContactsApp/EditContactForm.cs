@@ -1,12 +1,23 @@
-﻿using ContactsAppBLL;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ContactsAppBLL;
 
 namespace ContactsApp
 {
-    public partial class AddContactForm : Form
+    public partial class EditContactForm : Form
     {
+        public EditContactForm()
+        {
+            InitializeComponent();
+        }
+
         /// <summary>
         /// индикатор корректного выхода
         /// </summary>
@@ -28,7 +39,6 @@ namespace ContactsApp
                 _contact = value;
             }
         }
-
         public bool CorrectExit
         {
             get
@@ -41,20 +51,19 @@ namespace ContactsApp
             }
         }
 
-        public AddContactForm()
+        private void EditContactForm_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
+            userControl11.Contact = new Contact();
+            userControl11.PutInName(Contact.Name);
+            userControl11.PutInSurname(Contact.Surname);
+            userControl11.PutInBirthday(Contact.BirthDay);
+            userControl11.PutInEMail(Contact.EMail);
+            userControl11.PutInPhone(Contact.Phone);
+            userControl11.PutInVk(Contact.VkPage);
         }
 
-        /// <summary>
-        /// Подтверждение введенных данных
-        /// Закроет окно и передаст информацию в случае отсутствия ошибок в введенных данных
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonConfirmAdd_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
             if (userControl11.CheckCorrectnessData())
             {
                 this.Close();
@@ -62,11 +71,5 @@ namespace ContactsApp
                 CorrectExit = true;
             }
         }
-
-        private void AddContactForm_Load(object sender, EventArgs e)
-        {
-            userControl11.Contact = new Contact();
-            }
     }
-
 }
