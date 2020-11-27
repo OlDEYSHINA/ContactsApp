@@ -129,5 +129,17 @@ namespace ContactsApp
             }
            
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                ProjectManager.SaveToFile(Project);
+            }
+            catch 
+            {
+                
+            }
+        }
     }
 }
