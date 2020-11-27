@@ -48,8 +48,8 @@ namespace ContactsAppBLL
         public static Project LoadFromFile()
         {
             Project project = new Project();
-            try
-            {
+            // try
+            // {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.NullValueHandling = NullValueHandling.Include;
                 serializer.TypeNameHandling = TypeNameHandling.All;
@@ -59,11 +59,11 @@ namespace ContactsAppBLL
                 {
                     project = (Project)serializer.Deserialize<Project>(reader);
                 }
-            }
-            catch (Exception)
-            {
-                return project;
-            }
+            // }
+            // catch (Exception)
+            // {
+            //     return project;
+            // }
             return project;
         }
         public static Project LoadFromFile(string fullFilename)

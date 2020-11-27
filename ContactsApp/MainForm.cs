@@ -123,7 +123,7 @@ namespace ContactsApp
                     listBoxContact.Items.Add(item.Surname);
                 }
             }
-            catch (ArgumentException exception)
+            catch
             {
                 labelCorrectLoadFile.Text = "Обнаружено повреждение данных";
             }
