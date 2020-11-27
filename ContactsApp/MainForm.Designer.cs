@@ -44,6 +44,7 @@
             this.buttonChangeParamInContact = new System.Windows.Forms.Button();
             this.buttonDeleteContact = new System.Windows.Forms.Button();
             this.userControl11 = new ContactsApp.UserControl1();
+            this.labelCorrectLoadFile = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(818, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(818, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -163,18 +164,29 @@
             // 
             // userControl11
             // 
+            this.userControl11.Contact = null;
             this.userControl11.Enabled = false;
             this.userControl11.Location = new System.Drawing.Point(293, 74);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Contact = null;
             this.userControl11.Size = new System.Drawing.Size(466, 295);
             this.userControl11.TabIndex = 28;
+            // 
+            // labelCorrectLoadFile
+            // 
+            this.labelCorrectLoadFile.AutoSize = true;
+            this.labelCorrectLoadFile.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectLoadFile.Location = new System.Drawing.Point(386, 13);
+            this.labelCorrectLoadFile.Name = "labelCorrectLoadFile";
+            this.labelCorrectLoadFile.Size = new System.Drawing.Size(138, 17);
+            this.labelCorrectLoadFile.TabIndex = 29;
+            this.labelCorrectLoadFile.Text = "labelCorrectLoadFile";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 648);
+            this.Controls.Add(this.labelCorrectLoadFile);
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.buttonDeleteContact);
             this.Controls.Add(this.buttonChangeParamInContact);
@@ -186,6 +198,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -210,6 +223,7 @@
         private System.Windows.Forms.Button buttonDeleteContact;
         public System.Windows.Forms.ListBox listBoxContact;
         private UserControl1 userControl11;
+        private System.Windows.Forms.Label labelCorrectLoadFile;
     }
 }
 

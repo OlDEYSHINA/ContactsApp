@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using Newtonsoft.Json;
 using Formatting = Newtonsoft.Json.Formatting;
 
 namespace ContactsAppBLL
 {
     public class ProjectManager
     {
-        public static string MainFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"\\ContactApp\\Contacts.txt";
-     
+        public static string MainFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\ContactApp\\Contacts.txt";
+
         /// <summary>
         /// Сохранение файла контактов по стандартному пути 
         /// </summary>
@@ -95,5 +89,5 @@ namespace ContactsAppBLL
         }
 
     }
-   
+
 }

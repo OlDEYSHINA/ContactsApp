@@ -53,7 +53,7 @@ namespace ContactsApp
             if (editContactForm.CorrectExit)
             {
                 var updatedContact = editContactForm.Contact;
-                Project.Persons[listBoxContact.SelectedIndex]=updatedContact;
+                Project.Persons[listBoxContact.SelectedIndex] = updatedContact;
                 listBoxContact.Items.Add(updatedContact.Surname);
                 listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
             }
@@ -88,7 +88,7 @@ namespace ContactsApp
             userControl11.PutInSurname(tempPerson.Surname);
             userControl11.PutInName(tempPerson.Name);
             userControl11.PutInBirthday(tempPerson.BirthDay);
-            userControl11.PutInPhone(tempPerson.Phone);
+            userControl11.PutInPhone(tempPerson.PhoneNumber.Number);
             userControl11.PutInEMail(tempPerson.EMail);
             userControl11.PutInVk(tempPerson.VkPage);
         }
@@ -110,6 +110,24 @@ namespace ContactsApp
             }
         }
 
-       
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            labelCorrectLoadFile.Text = null;
+            try
+            {
+                Project = ProjectManager.LoadFromFile();
+                listBoxContact.Items.Clear();
+
+                foreach (var item in Project.Persons)
+                {
+                    listBoxContact.Items.Add(item.Surname);
+                }
+            }
+            catch (ArgumentException exception)
+            {
+                labelCorrectLoadFile.Text = "Обнаружено повреждение данных";
+            }
+           
+        }
     }
 }

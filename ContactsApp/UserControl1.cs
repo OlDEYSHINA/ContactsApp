@@ -98,7 +98,7 @@ namespace ContactsApp
             try
             {
                 labelPhoneException.Text = null;
-                Contact.Phone = textBoxPhone.Text;
+                Contact.PhoneNumber.Number = textBoxPhone.Text;
             }
             catch (ArgumentException exception)
             {

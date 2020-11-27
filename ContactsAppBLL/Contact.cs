@@ -23,11 +23,6 @@ namespace ContactsAppBLL
         private DateTime _birthday;
 
         /// <summary>
-        /// Телефон
-        /// </summary>
-        private string _phone;
-
-        /// <summary>
         /// Электронная почта
         /// </summary>
         private string _eMail;
@@ -134,49 +129,9 @@ namespace ContactsAppBLL
         }
 
         /// <summary>
-        /// Метод проверки строки на наличие в ней букв
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        private Boolean IsSymbolContains(string input)
-        {
-            if (input != null)
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-
-                    if (char.IsLetter(input[i]))
-                    {
-                        return true;
-                    }
-
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
         /// Возвращает и задает параметр Телефон
         /// </summary>
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (value == String.Empty)
-                {
-                    throw new ArgumentException("Заполните параметр Телефон");
-                }
-                else if (IsSymbolContains(value))
-                {
-                    throw new ArgumentException("Параметр Телефон должен содержать только цифры и знак +");
-                }
-                else
-                {
-                    _phone = value;
-                }
-            }
-        }
+        public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
 
         /// <summary>
         /// Возвращает и задает параметр страница в социальных сетях

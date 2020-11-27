@@ -58,7 +58,7 @@ namespace ContactsApp
             userControl11.PutInSurname(Contact.Surname);
             userControl11.PutInBirthday(Contact.BirthDay);
             userControl11.PutInEMail(Contact.EMail);
-            userControl11.PutInPhone(Contact.Phone);
+            userControl11.PutInPhone(Contact.PhoneNumber.Number);
             userControl11.PutInVk(Contact.VkPage);
         }
 
