@@ -17,13 +17,22 @@ namespace ContactsApp
             set
             {
                 _contact = value;
-            }
+              }
         }
         public UserControl1()
         {
             InitializeComponent();
         }
 
+        public void FillContact()
+        {
+            textBoxSurname.Text = Contact.Surname;
+            textBoxName.Text = Contact.Name;
+            dateTimeBirthDay.Value = Contact.BirthDay;
+            textBoxPhone.Text = Contact.PhoneNumber.Number;
+            textBoxEMail.Text = Contact.EMail;
+            textBoxVK.Text = Contact.VkPage;
+        }
         public void PutInSurname(string value)
         {
             textBoxSurname.Text = value;
@@ -50,10 +59,9 @@ namespace ContactsApp
             textBoxVK.Text = value;
         }
 
-
-
-        private void UserControl1_Load(object sender, EventArgs e)
+      private void UserControl1_Load(object sender, EventArgs e)
         {
+            
             labelSurnameException.Text = null;
             labelBirthdayException.Text = null;
             labelEmailException.Text = null;

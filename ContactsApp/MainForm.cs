@@ -1,5 +1,6 @@
 ﻿using ContactsAppBLL;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ContactsApp
@@ -28,7 +29,7 @@ namespace ContactsApp
             if (addContactForm.CorrectExit)
             {
                 var updatedContact = addContactForm.Contact;
-                Project.Persons.Add(updatedContact);
+                Project.Contacts.Add(updatedContact);
                 listBoxContact.Items.Add(updatedContact.Surname);
             }
 
@@ -46,17 +47,27 @@ namespace ContactsApp
             {
                 return;
             }
-            EditContactForm editContactForm = new EditContactForm();
+            AddContactForm addContactForm = new AddContactForm();
+            addContactForm.Contact = new Contact();
+            addContactForm.Contact = Project.Contacts[listBoxContact.SelectedIndex];
+            addContactForm.ShowDialog();
+            if (addContactForm.CorrectExit)
+            {
+                var updatedContact = addContactForm.Contact;
+                Project.Contacts[listBoxContact.SelectedIndex] = updatedContact;
+                sortAndWriteListBox();
+            }
+            /* EditContactForm editContactForm = new EditContactForm();
             editContactForm.Contact = new Contact();
-            editContactForm.Contact = Project.Persons[listBoxContact.SelectedIndex];
+            editContactForm.Contact = Project.Contacts[listBoxContact.SelectedIndex];
             editContactForm.ShowDialog();
             if (editContactForm.CorrectExit)
             {
                 var updatedContact = editContactForm.Contact;
-                Project.Persons[listBoxContact.SelectedIndex] = updatedContact;
+                Project.Contacts[listBoxContact.SelectedIndex] = updatedContact;
                 listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
                 listBoxContact.Items.Add(updatedContact.Surname);
-            }
+            }*/
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,7 +75,7 @@ namespace ContactsApp
             Project = ProjectManager.LoadFromFile();
             listBoxContact.Items.Clear();
 
-            foreach (var item in Project.Persons)
+            foreach (var item in Project.Contacts)
             {
                 listBoxContact.Items.Add(item.Surname);
             }
@@ -84,13 +95,13 @@ namespace ContactsApp
             {
                 return;
             }
-            var tempPerson = Project.Persons[listBoxContact.SelectedIndex];
-            userControl11.PutInSurname(tempPerson.Surname);
-            userControl11.PutInName(tempPerson.Name);
-            userControl11.PutInBirthday(tempPerson.BirthDay);
-            userControl11.PutInPhone(tempPerson.PhoneNumber.Number);
-            userControl11.PutInEMail(tempPerson.EMail);
-            userControl11.PutInVk(tempPerson.VkPage);
+            var tempContact = Project.Contacts[listBoxContact.SelectedIndex];
+            userControl11.PutInSurname(tempContact.Surname);
+            userControl11.PutInName(tempContact.Name);
+            userControl11.PutInBirthday(tempContact.BirthDay);
+            userControl11.PutInPhone(tempContact.PhoneNumber.Number);
+            userControl11.PutInEMail(tempContact.EMail);
+            userControl11.PutInVk(tempContact.VkPage);
         }
 
         /// <summary>
@@ -105,8 +116,8 @@ namespace ContactsApp
             DialogResult deleteResult = MessageBox.Show("Подтвердите удаление контакта \n Фамилия контакта: " + listBoxContact.Text, "Удаление", MessageBoxButtons.OKCancel);
             if (deleteResult == DialogResult.OK)
             {
-                Project.Persons.RemoveAt(listBoxContact.SelectedIndex);
-                listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
+                Project.Contacts.RemoveAt(listBoxContact.SelectedIndex);
+                sortAndWriteListBox();
             }
         }
 
@@ -115,18 +126,13 @@ namespace ContactsApp
             try
             {
                 Project = ProjectManager.LoadFromFile();
-                listBoxContact.Items.Clear();
-
-                foreach (var item in Project.Persons)
-                {
-                    listBoxContact.Items.Add(item.Surname);
-                }
+                sortAndWriteListBox();
             }
             catch
             {
 
             }
-           
+
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -135,9 +141,9 @@ namespace ContactsApp
             {
                 ProjectManager.SaveToFile(Project);
             }
-            catch 
+            catch
             {
-                
+
             }
         }
 
@@ -146,14 +152,19 @@ namespace ContactsApp
 
         }
 
-        private void sortListBox()
+        private void sortAndWriteListBox()
         {
+            Project.Contacts = Project.Contacts.OrderBy(o => o.Surname).ToList();
             listBoxContact.Items.Clear();
-            
+            foreach (var item in Project.Contacts)
+            {
+                listBoxContact.Items.Add(item.Surname);
+            }
+
         }
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("If you find some bugs\n send me mailto:Stepa19991005@gmail.com", "About",MessageBoxButtons.OK);
+            MessageBox.Show("If you find some bugs\n send me mailto:Stepa19991005@gmail.com", "About", MessageBoxButtons.OK);
         }
     }
 }

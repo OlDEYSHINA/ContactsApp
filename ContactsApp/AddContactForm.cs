@@ -66,7 +66,12 @@ namespace ContactsApp
         private void AddContactForm_Load(object sender, EventArgs e)
         {
             userControl11.Contact = new Contact();
+            userControl11.Contact = Contact;
+            if (!string.IsNullOrEmpty(Contact.Surname))
+            {
+                userControl11.FillContact();
             }
+        }
 
         private void userControl11_Load(object sender, EventArgs e)
         {
