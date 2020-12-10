@@ -67,6 +67,11 @@ namespace ContactsApp
         {
             userControl11.Contact = new Contact();
             }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

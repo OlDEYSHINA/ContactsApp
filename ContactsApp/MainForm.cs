@@ -54,8 +54,8 @@ namespace ContactsApp
             {
                 var updatedContact = editContactForm.Contact;
                 Project.Persons[listBoxContact.SelectedIndex] = updatedContact;
-                listBoxContact.Items.Add(updatedContact.Surname);
                 listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
+                listBoxContact.Items.Add(updatedContact.Surname);
             }
         }
 
@@ -112,7 +112,6 @@ namespace ContactsApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            labelCorrectLoadFile.Text = null;
             try
             {
                 Project = ProjectManager.LoadFromFile();
@@ -125,7 +124,7 @@ namespace ContactsApp
             }
             catch
             {
-                labelCorrectLoadFile.Text = "Обнаружено повреждение данных";
+
             }
            
         }
@@ -140,6 +139,21 @@ namespace ContactsApp
             {
                 
             }
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sortListBox()
+        {
+            listBoxContact.Items.Clear();
+            
+        }
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("If you find some bugs\n send me mailto:Stepa19991005@gmail.com", "About",MessageBoxButtons.OK);
         }
     }
 }

@@ -13,5 +13,4 @@ namespace ContactsAppBLL
         /// </summary>
         public List<Contact> Persons { get; set; } = new List<Contact>();
     }
-    
 }

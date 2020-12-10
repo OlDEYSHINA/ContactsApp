@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.listBoxContact = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,24 +39,25 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.userControl11 = new ContactsApp.UserControl1();
+            this.buttonDeleteContact = new System.Windows.Forms.Button();
+            this.buttonChangeParamInContact = new System.Windows.Forms.Button();
             this.buttonCreateNewContact = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonChangeParamInContact = new System.Windows.Forms.Button();
-            this.buttonDeleteContact = new System.Windows.Forms.Button();
-            this.userControl11 = new ContactsApp.UserControl1();
-            this.labelCorrectLoadFile = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxContact
             // 
+            this.listBoxContact.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxContact.FormattingEnabled = true;
             this.listBoxContact.ItemHeight = 16;
             this.listBoxContact.Location = new System.Drawing.Point(12, 74);
             this.listBoxContact.Name = "listBoxContact";
-            this.listBoxContact.Size = new System.Drawing.Size(275, 532);
+            this.listBoxContact.Size = new System.Drawing.Size(275, 516);
             this.listBoxContact.TabIndex = 0;
             this.listBoxContact.SelectedIndexChanged += new System.EventHandler(this.listBoxContact_SelectedIndexChanged);
             // 
@@ -78,7 +80,7 @@
             this.loadToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.editToolStripMenuItem.Text = "File";
             // 
             // loadToolStripMenuItem
@@ -98,7 +100,7 @@
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(49, 26);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem1.Text = "Edit";
             // 
             // helpToolStripMenuItem
@@ -106,7 +108,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -114,6 +116,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -124,16 +127,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Find:";
             // 
-            // buttonCreateNewContact
-            // 
-            this.buttonCreateNewContact.Location = new System.Drawing.Point(12, 612);
-            this.buttonCreateNewContact.Name = "buttonCreateNewContact";
-            this.buttonCreateNewContact.Size = new System.Drawing.Size(91, 33);
-            this.buttonCreateNewContact.TabIndex = 5;
-            this.buttonCreateNewContact.Text = "Создать";
-            this.buttonCreateNewContact.UseVisualStyleBackColor = true;
-            this.buttonCreateNewContact.Click += new System.EventHandler(this.button1_Click);
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(53, 43);
@@ -141,52 +134,58 @@
             this.textBox1.Size = new System.Drawing.Size(212, 22);
             this.textBox1.TabIndex = 6;
             // 
-            // buttonChangeParamInContact
+            // userControl11
             // 
-            this.buttonChangeParamInContact.CausesValidation = false;
-            this.buttonChangeParamInContact.Location = new System.Drawing.Point(104, 612);
-            this.buttonChangeParamInContact.Name = "buttonChangeParamInContact";
-            this.buttonChangeParamInContact.Size = new System.Drawing.Size(91, 33);
-            this.buttonChangeParamInContact.TabIndex = 26;
-            this.buttonChangeParamInContact.Text = "Изменить";
-            this.buttonChangeParamInContact.UseVisualStyleBackColor = true;
-            this.buttonChangeParamInContact.Click += new System.EventHandler(this.buttonChangeParamInContact_Click);
+            this.userControl11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControl11.Contact = null;
+            this.userControl11.Location = new System.Drawing.Point(293, 74);
+            this.userControl11.MinimumSize = new System.Drawing.Size(473, 295);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(473, 316);
+            this.userControl11.TabIndex = 28;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // buttonDeleteContact
             // 
-            this.buttonDeleteContact.Location = new System.Drawing.Point(196, 612);
+            this.buttonDeleteContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonDeleteContact.Image = global::ContactsApp.Properties.Resources.DeleteContact;
+            this.buttonDeleteContact.Location = new System.Drawing.Point(141, 595);
             this.buttonDeleteContact.Name = "buttonDeleteContact";
-            this.buttonDeleteContact.Size = new System.Drawing.Size(91, 33);
+            this.buttonDeleteContact.Size = new System.Drawing.Size(60, 50);
             this.buttonDeleteContact.TabIndex = 27;
-            this.buttonDeleteContact.Text = "Удалить";
             this.buttonDeleteContact.UseVisualStyleBackColor = true;
             this.buttonDeleteContact.Click += new System.EventHandler(this.buttonDeleteContact_Click);
             // 
-            // userControl11
+            // buttonChangeParamInContact
             // 
-            this.userControl11.Contact = null;
-            this.userControl11.Enabled = false;
-            this.userControl11.Location = new System.Drawing.Point(293, 74);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(466, 295);
-            this.userControl11.TabIndex = 28;
+            this.buttonChangeParamInContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonChangeParamInContact.CausesValidation = false;
+            this.buttonChangeParamInContact.Image = global::ContactsApp.Properties.Resources.EditContact;
+            this.buttonChangeParamInContact.Location = new System.Drawing.Point(78, 595);
+            this.buttonChangeParamInContact.Name = "buttonChangeParamInContact";
+            this.buttonChangeParamInContact.Size = new System.Drawing.Size(57, 50);
+            this.buttonChangeParamInContact.TabIndex = 26;
+            this.buttonChangeParamInContact.UseVisualStyleBackColor = true;
+            this.buttonChangeParamInContact.Click += new System.EventHandler(this.buttonChangeParamInContact_Click);
             // 
-            // labelCorrectLoadFile
+            // buttonCreateNewContact
             // 
-            this.labelCorrectLoadFile.AutoSize = true;
-            this.labelCorrectLoadFile.ForeColor = System.Drawing.Color.Red;
-            this.labelCorrectLoadFile.Location = new System.Drawing.Point(386, 13);
-            this.labelCorrectLoadFile.Name = "labelCorrectLoadFile";
-            this.labelCorrectLoadFile.Size = new System.Drawing.Size(138, 17);
-            this.labelCorrectLoadFile.TabIndex = 29;
-            this.labelCorrectLoadFile.Text = "labelCorrectLoadFile";
+            this.buttonCreateNewContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCreateNewContact.Image = ((System.Drawing.Image)(resources.GetObject("buttonCreateNewContact.Image")));
+            this.buttonCreateNewContact.Location = new System.Drawing.Point(12, 595);
+            this.buttonCreateNewContact.Name = "buttonCreateNewContact";
+            this.buttonCreateNewContact.Size = new System.Drawing.Size(60, 50);
+            this.buttonCreateNewContact.TabIndex = 5;
+            this.buttonCreateNewContact.UseVisualStyleBackColor = true;
+            this.buttonCreateNewContact.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 648);
-            this.Controls.Add(this.labelCorrectLoadFile);
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.buttonDeleteContact);
             this.Controls.Add(this.buttonChangeParamInContact);
@@ -224,7 +223,6 @@
         private System.Windows.Forms.Button buttonDeleteContact;
         public System.Windows.Forms.ListBox listBoxContact;
         private UserControl1 userControl11;
-        private System.Windows.Forms.Label labelCorrectLoadFile;
     }
 }
 

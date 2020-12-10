@@ -60,7 +60,7 @@ namespace ContactsAppBLL
                     }
                 }
             }
-
+            
             return false;
         }
 
@@ -94,7 +94,7 @@ namespace ContactsAppBLL
             get { return _name; }
             set
             {
-                if (value == String.Empty)
+                if (String.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Заполните параметр Имя");
                 }

@@ -34,11 +34,14 @@
             // 
             // userControl11
             // 
+            this.userControl11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControl11.Contact = null;
             this.userControl11.Location = new System.Drawing.Point(12, 12);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Contact = null;
-            this.userControl11.Size = new System.Drawing.Size(544, 319);
+            this.userControl11.Size = new System.Drawing.Size(459, 319);
             this.userControl11.TabIndex = 0;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // ConfirmAdd
             // 
