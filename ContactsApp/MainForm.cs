@@ -21,7 +21,10 @@ namespace ContactsApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод вызова окна добавления контакта
+        /// </summary>
+        private void AddNewContact()
         {
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.Contact = new Contact();
@@ -31,17 +34,14 @@ namespace ContactsApp
                 var updatedContact = addContactForm.Contact;
                 Project.Contacts.Add(updatedContact);
                 listBoxContact.Items.Add(updatedContact.Surname);
+                sortAndWriteListBox();
             }
-
-
         }
 
         /// <summary>
-        /// Кнопка вызова окна изменения данных контакта
+        /// Метод вызова окна изменения контакта
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonChangeParamInContact_Click(object sender, EventArgs e)
+        private void EditNewContact()
         {
             if (listBoxContact.SelectedIndex == -1)
             {
@@ -57,17 +57,36 @@ namespace ContactsApp
                 Project.Contacts[listBoxContact.SelectedIndex] = updatedContact;
                 sortAndWriteListBox();
             }
-            /* EditContactForm editContactForm = new EditContactForm();
-            editContactForm.Contact = new Contact();
-            editContactForm.Contact = Project.Contacts[listBoxContact.SelectedIndex];
-            editContactForm.ShowDialog();
-            if (editContactForm.CorrectExit)
+        }
+
+        /// <summary>
+        /// Метод удаления контакта 
+        /// </summary>
+        private void DeleteContact()
+        {
+            if (listBoxContact.SelectedIndex == -1)
             {
-                var updatedContact = editContactForm.Contact;
-                Project.Contacts[listBoxContact.SelectedIndex] = updatedContact;
-                listBoxContact.Items.RemoveAt(listBoxContact.SelectedIndex);
-                listBoxContact.Items.Add(updatedContact.Surname);
-            }*/
+                return;
+            }
+
+            DialogResult deleteResult =
+                MessageBox.Show("Подтвердите удаление контакта \n Фамилия контакта: " + listBoxContact.Text, "Удаление",
+                    MessageBoxButtons.OKCancel);
+            if (deleteResult == DialogResult.OK)
+            {
+                Project.Contacts.RemoveAt(listBoxContact.SelectedIndex);
+                sortAndWriteListBox();
+            }
+        }
+
+        /// <summary>
+    /// Кнопка вызова окна изменения данных контакта
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void buttonChangeParamInContact_Click(object sender, EventArgs e)
+        {
+            EditNewContact();
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,16 +128,7 @@ namespace ContactsApp
         /// </summary>
         private void buttonDeleteContact_Click(object sender, EventArgs e)
         {
-            if (listBoxContact.SelectedIndex == -1)
-            {
-                return;
-            }
-            DialogResult deleteResult = MessageBox.Show("Подтвердите удаление контакта \n Фамилия контакта: " + listBoxContact.Text, "Удаление", MessageBoxButtons.OKCancel);
-            if (deleteResult == DialogResult.OK)
-            {
-                Project.Contacts.RemoveAt(listBoxContact.SelectedIndex);
-                sortAndWriteListBox();
-            }
+           DeleteContact();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -165,6 +175,26 @@ namespace ContactsApp
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("If you find some bugs\n send me mailto:Stepa19991005@gmail.com", "About", MessageBoxButtons.OK);
+        }
+
+        private void buttonСreateNewContact_Click(object sender, EventArgs e)
+        {
+            AddNewContact();
+        }
+
+        private void addContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNewContact();
+        }
+
+        private void editContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditNewContact();
+        }
+
+        private void deleteContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteContact();
         }
     }
 }
