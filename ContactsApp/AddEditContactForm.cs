@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ContactsApp
 {
-    public partial class AddContactForm : Form
+    public partial class AddEditContactForm : Form
     {
         /// <summary>
         /// индикатор корректного выхода
@@ -41,7 +41,7 @@ namespace ContactsApp
             }
         }
 
-        public AddContactForm()
+        public AddEditContactForm()
         {
             InitializeComponent();
         }
@@ -55,21 +55,21 @@ namespace ContactsApp
         private void buttonConfirmAdd_Click(object sender, EventArgs e)
         {
 
-            if (userControl11.CheckCorrectnessData())
+            if (contactAddControl.CheckCorrectnessData())
             {
                 this.Close();
-                Contact = userControl11.Contact;
+                Contact = contactAddControl.Contact;
                 CorrectExit = true;
             }
         }
 
         private void AddContactForm_Load(object sender, EventArgs e)
         {
-            userControl11.Contact = new Contact();
-            userControl11.Contact = Contact;
+            contactAddControl.Contact = new Contact();
+            contactAddControl.Contact = Contact;
             if (!string.IsNullOrEmpty(Contact.Surname))
             {
-                userControl11.FillContact();
+                contactAddControl.FillContact();
             }
         }
 

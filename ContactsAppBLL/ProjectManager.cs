@@ -7,48 +7,52 @@ namespace ContactsAppBLL
 {
     public class ProjectManager
     {
-        public static string MainFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\ContactApp\\Contacts.txt";
-
+        public static readonly string DefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                                    "\\ContactApp\\Contacts.txt";
         /// <summary>
-        /// Сохранение файла контактов по стандартному пути 
+        /// Сохранение файла контактов по указанному пути
         /// </summary>
         /// <param name="project">Сохраняемый класс</param>
-        public static void SaveToFile(Project project)
+        public static void SaveToFile(Project project, string savePath)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(MainFilePath));
+            Directory.CreateDirectory(Path.GetDirectoryName(savePath));
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Include;
             serializer.TypeNameHandling = TypeNameHandling.All;
             serializer.Formatting = Formatting.Indented;
-            using (StreamWriter sw = new StreamWriter(MainFilePath))
+            using (StreamWriter sw = new StreamWriter(savePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, project);
             };
         }
-
-        public static Project LoadFromFile()
+        /// <summary>
+        /// Загрузка файла из указанного пути
+        /// </summary>
+        /// <param name="loadPath"></param>
+        /// <returns></returns>
+        public static Project LoadFromFile(string loadPath)
         {
             Project project = new Project();
-            // try
-            // {
+            try
+            {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.NullValueHandling = NullValueHandling.Include;
                 serializer.TypeNameHandling = TypeNameHandling.All;
                 serializer.Formatting = Formatting.None;
-                using (StreamReader sr = new StreamReader(MainFilePath))
+                using (StreamReader sr = new StreamReader(loadPath))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {
                     project = (Project)serializer.Deserialize<Project>(reader);
                 }
-            // }
-            // catch (Exception)
-            // {
-            //     return project;
-            // }
+            }
+            catch (Exception)
+            {
+                return project;
+            }
             return project;
         }
-   
+
     }
 
 }

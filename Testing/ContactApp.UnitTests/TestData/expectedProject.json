@@ -1,0 +1,20 @@
+{
+  "$type": "ContactsAppBLL.Project, ContactsAppBLL",
+  "Contacts": {
+    "$type": "System.Collections.Generic.List`1[[ContactsAppBLL.Contact, ContactsAppBLL]], mscorlib",
+    "$values": [
+      {
+        "$type": "ContactsAppBLL.Contact, ContactsAppBLL",
+        "Surname": "Johnson",
+        "Name": "James",
+        "BirthDay": "2008-04-02T04:02:04",
+        "PhoneNumber": {
+          "$type": "ContactsAppBLL.PhoneNumber, ContactsAppBLL",
+          "Number": "+79131111600"
+        },
+        "VkPage": "CutJohnson",
+        "EMail": "Jorno@gmail.com"
+      }
+    ]
+  }
+}

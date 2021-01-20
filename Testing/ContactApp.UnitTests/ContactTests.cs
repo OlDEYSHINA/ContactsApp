@@ -1,7 +1,6 @@
-﻿using System;
-using ContactsAppBLL;
+﻿using ContactsAppBLL;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using System;
 
 namespace ContactApp.UnitTests
 {
@@ -140,13 +139,13 @@ namespace ContactApp.UnitTests
                 }
             );
         }
-        
+
         // Check PhoneNumber parameters
         [Test]
         public void PhoneNumber_ContainSymbols_ThrowsException()
         {
             // setup
-            var contact = new Contact(); 
+            var contact = new Contact();
             contact.PhoneNumber = new PhoneNumber();
             var sourcePhoneNumber = "jaMeS";
 
@@ -160,28 +159,13 @@ namespace ContactApp.UnitTests
             );
         }
 
-        [Test]
-        public void PhoneNumber_GoodNumber1_ReturnsSamePhoneNumber()
+        [TestCase("+79131111600")]
+        [TestCase("89131111600")]
+        public void PhoneNumber_GoodNumber_ReturnsSamePhoneNumber(string value)
         {
             // setup
             var contact = new Contact();
-            var sourcePhoneNumber = "+79131111600";
-            var expectedPhoneNumber = sourcePhoneNumber;
-
-            // Act
-            contact.PhoneNumber.Number = sourcePhoneNumber;
-            var actualPhoneNumber = contact.PhoneNumber.Number;
-
-            // Assert
-            NUnit.Framework.Assert.AreEqual(expectedPhoneNumber, actualPhoneNumber);
-        }
-
-        [Test]
-        public void PhoneNumber_GoodNumber2_ReturnsSamePhoneNumber()
-        {
-            // setup
-            var contact = new Contact();
-            var sourcePhoneNumber = "89131111600";
+            var sourcePhoneNumber = value;
             var expectedPhoneNumber = sourcePhoneNumber;
 
             // Act
@@ -198,7 +182,7 @@ namespace ContactApp.UnitTests
             // setup
             var contact = new Contact();
             var sourcePhoneNumber = "";
-            
+
             // Assert
             NUnit.Framework.Assert.Throws<ArgumentException>(
                 () =>
@@ -209,12 +193,14 @@ namespace ContactApp.UnitTests
             );
         }
 
-        [Test]
-        public void PhoneNumber_UnCorrectNumber1_ThrowException()
+        [TestCase("+89131111600")]
+        [TestCase("79131111600")]
+        [TestCase("JoJoReference")]
+        public void PhoneNumber_UnCorrectNumber_ThrowException(string value)
         {
             // setup
             var contact = new Contact();
-            var sourcePhoneNumber = "+89131111600";
+            var sourcePhoneNumber = value;
 
             // Assert
             NUnit.Framework.Assert.Throws<ArgumentException>(
@@ -225,23 +211,7 @@ namespace ContactApp.UnitTests
                 }
             );
         }
-        [Test]
-        public void PhoneNumber_UnCorrectNumber2_ThrowException()
-        {
-            // setup
-            var contact = new Contact();
-            var sourcePhoneNumber = "79131111600";
-
-            // Assert
-            NUnit.Framework.Assert.Throws<ArgumentException>(
-                () =>
-                {
-                    // Act
-                    contact.PhoneNumber.Number = sourcePhoneNumber;
-                }
-            );
-        }
-
+      
         [Test]
         public void PhoneNumber_TooLongNumber_ThrowException()
         {
@@ -297,7 +267,7 @@ namespace ContactApp.UnitTests
         {
             // setup
             var contact = new Contact();
-            var sourceBirthDay =new DateTime(2008,6,1);
+            var sourceBirthDay = new DateTime(2008, 6, 1);
             var expectedBirthDay = sourceBirthDay;
 
             // Act
