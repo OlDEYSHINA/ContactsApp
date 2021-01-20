@@ -36,6 +36,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +56,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "v 0.0.2";
+            this.label2.Text = "v 0.9.8";
             // 
             // label3
             // 
@@ -106,11 +107,21 @@
             this.linkLabel2.Text = "Fake@mail.ru";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 336);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(164, 17);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "2020 Podkorytov Stepan";
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 362);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label5);
@@ -119,6 +130,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(556, 409);
+            this.MinimumSize = new System.Drawing.Size(556, 409);
             this.Name = "AboutForm";
             this.Text = "About";
             this.ResumeLayout(false);
@@ -135,5 +148,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Label label6;
     }
 }

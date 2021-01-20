@@ -44,6 +44,8 @@ namespace ContactsApp
                 var updatedContact = addEditContactForm.Contact;
                 Project.Contacts.Add(updatedContact);
                 listBoxContact.Items.Add(updatedContact.Surname);
+                ContactMainControl.Contact = updatedContact;
+                ContactMainControl.FillContact();
                 SortAndWriteListBox();
                 listBoxContact.Items.Clear();
                 if (string.IsNullOrEmpty(textBox1.Text))
@@ -83,6 +85,8 @@ namespace ContactsApp
                 var updatedContact = addEditContactForm.Contact;
                 Project.Contacts[listBoxContact.SelectedIndex] = updatedContact;
                 SortAndWriteListBox();
+                ContactMainControl.Contact = updatedContact;
+                ContactMainControl.FillContact();
                 listBoxContact.Items.Clear();
                 if (string.IsNullOrEmpty(textBox1.Text))
                 {
@@ -114,7 +118,7 @@ namespace ContactsApp
             }
 
             DialogResult deleteResult =
-                MessageBox.Show("Подтвердите удаление контакта \n Фамилия контакта: " + listBoxContact.Text, "Удаление",
+                MessageBox.Show("Do you really want delete \n this contact: " + listBoxContact.Text, "Delete Contact",
                     MessageBoxButtons.OKCancel);
             if (deleteResult == DialogResult.OK)
             {
