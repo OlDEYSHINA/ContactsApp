@@ -16,7 +16,7 @@ namespace ContactsApp
             get => _project;
             set => _project = value;
         }
-        
+
         /// <summary>
         /// Лист отображаемых контактов
         /// </summary>
