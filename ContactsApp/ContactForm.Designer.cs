@@ -1,6 +1,6 @@
 ﻿namespace ContactsApp
 {
-    partial class AddEditContactForm
+    partial class ContactForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditContactForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactForm));
             this.ConfirmAdd = new System.Windows.Forms.Button();
             this.contactAddControl = new ContactsApp.ContactControl();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             this.contactAddControl.TabIndex = 0;
             this.contactAddControl.Load += new System.EventHandler(this.userControl11_Load);
             // 
-            // AddEditContactForm
+            // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +68,7 @@
             this.Controls.Add(this.contactAddControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(651, 366);
-            this.Name = "AddEditContactForm";
+            this.Name = "ContactForm";
             this.Load += new System.EventHandler(this.AddContactForm_Load);
             this.ResumeLayout(false);
 

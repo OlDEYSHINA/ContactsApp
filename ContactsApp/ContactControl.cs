@@ -11,7 +11,6 @@ namespace ContactsApp
         ToolTip surNameToolTip = new ToolTip();
         ToolTip nameToolTip = new ToolTip();
         private System.Windows.Forms.ErrorProvider dateErrorProvider;
-
         ToolTip dateToolTip = new ToolTip();
         ToolTip phoneToolTip = new ToolTip();
         ToolTip eMailToolTip = new ToolTip();
@@ -26,6 +25,19 @@ namespace ContactsApp
             set
             {
                 _contact = value;
+                if (value != null)
+                {
+                    if (!string.IsNullOrEmpty(Contact.Surname))
+                    {
+
+                        textBoxSurname.Text = Contact.Surname;
+                        textBoxName.Text = Contact.Name;
+                        dateTimeBirthDay.Value = Contact.BirthDay;
+                        textBoxPhone.Text = Contact.PhoneNumber.Number;
+                        textBoxEMail.Text = Contact.EMail;
+                        textBoxVK.Text = Contact.VkPage;
+                    }
+                }
             }
         }
         public ContactControl()
@@ -37,16 +49,7 @@ namespace ContactsApp
         /// <summary>
         /// Заполнить контакт контрол
         /// </summary>
-        public void FillContact()
-        {
-            textBoxSurname.Text = Contact.Surname;
-            textBoxName.Text = Contact.Name;
-            dateTimeBirthDay.Value = Contact.BirthDay;
-            textBoxPhone.Text = Contact.PhoneNumber.Number;
-            textBoxEMail.Text = Contact.EMail;
-            textBoxVK.Text = Contact.VkPage;
-        }
-
+      
         public bool CheckCorrectnessData()
         {
             var correct = true;

@@ -41,7 +41,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FindBox = new System.Windows.Forms.TextBox();
             this.buttonDeleteContact = new System.Windows.Forms.Button();
             this.buttonChangeParamInContact = new System.Windows.Forms.Button();
             this.buttonCreateNewContact = new System.Windows.Forms.Button();
@@ -150,11 +150,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(53, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 22);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.FindBox.Location = new System.Drawing.Point(53, 43);
+            this.FindBox.Name = "FindBox";
+            this.FindBox.Size = new System.Drawing.Size(212, 22);
+            this.FindBox.TabIndex = 6;
+            this.FindBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonDeleteContact
             // 
@@ -211,7 +211,7 @@
             this.Controls.Add(this.ContactMainControl);
             this.Controls.Add(this.buttonDeleteContact);
             this.Controls.Add(this.buttonChangeParamInContact);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.FindBox);
             this.Controls.Add(this.buttonCreateNewContact);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxContact);
@@ -237,7 +237,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button buttonCreateNewContact;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox FindBox;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button buttonChangeParamInContact;
         private System.Windows.Forms.Button buttonDeleteContact;

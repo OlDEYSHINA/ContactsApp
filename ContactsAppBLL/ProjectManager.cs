@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Formatting = Newtonsoft.Json.Formatting;
 
@@ -7,6 +8,7 @@ namespace ContactsAppBLL
 {
     public class ProjectManager
     {
+       
         public static readonly string DefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                                                     "\\ContactApp\\Contacts.txt";
         /// <summary>
@@ -53,6 +55,17 @@ namespace ContactsAppBLL
             return project;
         }
 
+        public static List<Contact> FindInProject(string finding,List<Contact> FindThis)
+        {
+            var _viewsContacts = new List<Contact>();
+            if (string.IsNullOrEmpty(finding))
+            {
+                _viewsContacts = FindThis;
+                return _viewsContacts;
+            }
+            _viewsContacts = FindThis.FindAll(o => o.Surname.Contains(finding));
+            return _viewsContacts;
+        }
     }
 
 }
