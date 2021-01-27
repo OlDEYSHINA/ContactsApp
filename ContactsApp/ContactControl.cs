@@ -15,7 +15,9 @@ namespace ContactsApp
         ToolTip phoneToolTip = new ToolTip();
         ToolTip eMailToolTip = new ToolTip();
         ToolTip vkToolTip = new ToolTip();
-       
+        private Size dateSize;
+        private bool sizeLess = true;
+
         public Contact Contact
         {
             get
@@ -47,9 +49,8 @@ namespace ContactsApp
         }
 
         /// <summary>
-        /// Заполнить контакт контрол
+        /// Проверить корректность данных в полях
         /// </summary>
-      
         public bool CheckCorrectnessData()
         {
             var correct = true;
@@ -62,7 +63,7 @@ namespace ContactsApp
                 surNameToolTip.SetToolTip(textBoxSurname, exception.Message);
                 textBoxSurname.BackColor = Color.LightCoral;
                 correct = false;
-            } 
+            }
             try
             {
                 Contact.Name = textBoxName.Text;                                    //Name
@@ -72,19 +73,26 @@ namespace ContactsApp
                 nameToolTip.SetToolTip(textBoxName, exception.Message);
                 textBoxName.BackColor = Color.LightCoral;
                 correct = false;
-            } 
+            }
             try
             {
-                Contact.BirthDay =dateTimeBirthDay.Value;                           //BirthDay
+                dateSize = dateTimeBirthDay.ClientSize;
+                Contact.BirthDay = dateTimeBirthDay.Value;                           //BirthDay
             }
             catch (ArgumentException exception)
             {
+                if (sizeLess)
+                {
+                    dateSize = Size.Subtract(dateSize, new Size(20, 0));
+                    sizeLess = false;
+                }
+                dateTimeBirthDay.Size = dateSize;
                 dateErrorProvider.SetIconAlignment(dateTimeBirthDay, ErrorIconAlignment.MiddleRight);
                 dateErrorProvider.SetIconPadding(dateTimeBirthDay, 2);
                 dateErrorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
                 dateErrorProvider.SetError(dateTimeBirthDay, exception.Message);
                 correct = false;
-            } 
+            }
             try
             {
                 Contact.PhoneNumber.Number = textBoxPhone.Text;                              //Phone
@@ -94,7 +102,7 @@ namespace ContactsApp
                 phoneToolTip.SetToolTip(textBoxPhone, exception.Message);
                 textBoxPhone.BackColor = Color.LightCoral;
                 correct = false;
-            } 
+            }
             try
             {
                 Contact.EMail = textBoxEMail.Text;                              //Email
@@ -104,7 +112,7 @@ namespace ContactsApp
                 eMailToolTip.SetToolTip(textBoxEMail, exception.Message);
                 textBoxEMail.BackColor = Color.LightCoral;
                 correct = false;
-            }  
+            }
             try
             {
                 Contact.VkPage = textBoxVK.Text;                              //VkPage
@@ -119,7 +127,7 @@ namespace ContactsApp
         }
         private void textBoxSurname_TextChanged(object sender, EventArgs e)
         {
-            
+
             string exceptionText = "";
             surNameToolTip.Hide(textBoxSurname);
             surNameToolTip.ReshowDelay = 0;
@@ -130,7 +138,7 @@ namespace ContactsApp
             }
             catch (ArgumentException exception)
             {
-              exceptionText = exception.Message;
+                exceptionText = exception.Message;
             }
             if (string.IsNullOrEmpty(exceptionText))
             {
@@ -139,14 +147,14 @@ namespace ContactsApp
             }
             else
             {
-                surNameToolTip.SetToolTip(textBoxSurname,exceptionText);
+                surNameToolTip.SetToolTip(textBoxSurname, exceptionText);
                 textBoxSurname.BackColor = Color.LightCoral;
             }
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
-            
+
             string exceptionText = "";
             nameToolTip.ReshowDelay = 0;
             nameToolTip.InitialDelay = 10;
@@ -161,7 +169,7 @@ namespace ContactsApp
             if (string.IsNullOrEmpty(exceptionText))
             {
                 textBoxName.BackColor = Color.White;
-                
+
             }
             else
             {
@@ -172,20 +180,36 @@ namespace ContactsApp
 
         private void dateTimeBirthDay_ValueChanged(object sender, EventArgs e)
         {
-            dateErrorProvider.SetError(dateTimeBirthDay,null);
+            dateSize = dateTimeBirthDay.ClientSize;
+
+
             try
             {
                 Contact.BirthDay = dateTimeBirthDay.Value;
+                dateErrorProvider.SetError(dateTimeBirthDay, null);
+
+                if (!sizeLess)
+                {
+                    dateSize = Size.Add(dateSize, new Size(20, 0));
+                    sizeLess = true;
+                }
+                dateTimeBirthDay.Size = dateSize;
             }
             catch (Exception exception)
             {
-               
+                if (sizeLess)
+                {
+                    dateSize = Size.Subtract(dateSize, new Size(20, 0));
+                    sizeLess = false;
+                }
+                dateTimeBirthDay.Size = dateSize;
                 dateErrorProvider.SetIconAlignment(dateTimeBirthDay, ErrorIconAlignment.MiddleRight);
                 dateErrorProvider.SetIconPadding(dateTimeBirthDay, 2);
                 dateErrorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
                 dateErrorProvider.SetError(dateTimeBirthDay, exception.Message);
+                dateTimeBirthDay.Update();
             }
-         
+
         }
 
         private void textBoxPhone_TextChanged(object sender, EventArgs e)
@@ -262,5 +286,6 @@ namespace ContactsApp
                 textBoxVK.BackColor = Color.LightCoral;
             }
         }
+
     }
 }

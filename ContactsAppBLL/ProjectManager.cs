@@ -15,6 +15,7 @@ namespace ContactsAppBLL
         /// Сохранение файла контактов по указанному пути
         /// </summary>
         /// <param name="project">Сохраняемый класс</param>
+        /// <param name="savePath">Путь для сохранения файла проекта</param>
         public static void SaveToFile(Project project, string savePath)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(savePath));
@@ -31,7 +32,7 @@ namespace ContactsAppBLL
         /// <summary>
         /// Загрузка файла из указанного пути
         /// </summary>
-        /// <param name="loadPath"></param>
+        /// <param name="loadPath"> Путь по которому необходимо произовдить загрузку</param>
         /// <returns></returns>
         public static Project LoadFromFile(string loadPath)
         {
@@ -55,6 +56,12 @@ namespace ContactsAppBLL
             return project;
         }
 
+        /// <summary>
+        /// Метод поиска в списке , ищет совпадение во всех переменных списка
+        /// </summary>
+        /// <param name="finding"> Искомый параметр</param>
+        /// <param name="FindThis"> Список в котором необходимо производить поиск</param>
+        /// <returns>Возвращает СПИСОК с найденными совпадениями</returns>
         public static List<Contact> FindInProject(string finding,List<Contact> FindThis)
         {
             var _viewsContacts = new List<Contact>();

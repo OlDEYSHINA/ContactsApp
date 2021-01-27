@@ -7,11 +7,7 @@ namespace ContactsApp
 {
     public partial class ContactForm : Form
     {
-        /// <summary>
-        /// индикатор корректного выхода
-        /// </summary>
-        private bool _correctExit;
-
+       
         /// <summary>
         /// обьявление класса для передачи данных в другую форму
         /// </summary>
@@ -28,19 +24,7 @@ namespace ContactsApp
                 _contact = value;
             }
         }
-
-        public bool CorrectExit
-        {
-            get
-            {
-                return _correctExit;
-            }
-            private set
-            {
-                _correctExit = value;
-            }
-        }
-
+        
         public ContactForm()
         {
             InitializeComponent();
@@ -59,7 +43,7 @@ namespace ContactsApp
             {
                 this.Close();
                 Contact = contactAddControl.Contact;
-                CorrectExit = true;
+                this.DialogResult = DialogResult.OK;
             }
         }
 
@@ -69,10 +53,6 @@ namespace ContactsApp
             contactAddControl.Contact = Contact;
         }
 
-        private void userControl11_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

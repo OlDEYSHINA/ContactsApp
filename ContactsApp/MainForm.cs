@@ -10,7 +10,9 @@ namespace ContactsApp
     {
 
         private Project _project = new Project();
-
+            /// <summary>
+            /// Проект используемый программой
+            /// </summary>
         public Project Project
         {
             get => _project;
@@ -37,7 +39,7 @@ namespace ContactsApp
             ContactForm contactForm = new ContactForm();
             contactForm.Contact = new Contact();
             contactForm.ShowDialog();
-            if (contactForm.CorrectExit)
+            if (contactForm.DialogResult == DialogResult.OK)
             {
                 var updatedContact = contactForm.Contact;
                 Project.Contacts.Add(updatedContact);
@@ -61,7 +63,7 @@ namespace ContactsApp
             contactForm.Contact = new Contact();
             contactForm.Contact = Project.Contacts[listBoxContact.SelectedIndex];
             contactForm.ShowDialog();
-            if (contactForm.CorrectExit)
+            if (contactForm.DialogResult == DialogResult.OK) 
             {
                 var updatedContact = contactForm.Contact;
                 Project.Contacts[listBoxContact.SelectedIndex] = updatedContact;
