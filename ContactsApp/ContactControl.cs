@@ -15,8 +15,8 @@ namespace ContactsApp
         ToolTip phoneToolTip = new ToolTip();
         ToolTip eMailToolTip = new ToolTip();
         ToolTip vkToolTip = new ToolTip();
-        private Size dateSize;
-        private bool sizeLess = true;
+        private Size _dateSize;
+        private bool _sizeLess = true;
 
         public Contact Contact
         {
@@ -76,17 +76,17 @@ namespace ContactsApp
             }
             try
             {
-                dateSize = dateTimeBirthDay.ClientSize;
+                _dateSize = dateTimeBirthDay.ClientSize;
                 Contact.BirthDay = dateTimeBirthDay.Value;                           //BirthDay
             }
             catch (ArgumentException exception)
             {
-                if (sizeLess)
+                if (_sizeLess)
                 {
-                    dateSize = Size.Subtract(dateSize, new Size(20, 0));
-                    sizeLess = false;
+                    _dateSize = Size.Subtract(_dateSize, new Size(20, 0));
+                    _sizeLess = false;
                 }
-                dateTimeBirthDay.Size = dateSize;
+                dateTimeBirthDay.Size = _dateSize;
                 dateErrorProvider.SetIconAlignment(dateTimeBirthDay, ErrorIconAlignment.MiddleRight);
                 dateErrorProvider.SetIconPadding(dateTimeBirthDay, 2);
                 dateErrorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
@@ -180,7 +180,7 @@ namespace ContactsApp
 
         private void dateTimeBirthDay_ValueChanged(object sender, EventArgs e)
         {
-            dateSize = dateTimeBirthDay.ClientSize;
+            _dateSize = dateTimeBirthDay.ClientSize;
 
 
             try
@@ -188,21 +188,21 @@ namespace ContactsApp
                 Contact.BirthDay = dateTimeBirthDay.Value;
                 dateErrorProvider.SetError(dateTimeBirthDay, null);
 
-                if (!sizeLess)
+                if (!_sizeLess)
                 {
-                    dateSize = Size.Add(dateSize, new Size(20, 0));
-                    sizeLess = true;
+                    _dateSize = Size.Add(_dateSize, new Size(20, 0));
+                    _sizeLess = true;
                 }
-                dateTimeBirthDay.Size = dateSize;
+                dateTimeBirthDay.Size = _dateSize;
             }
             catch (Exception exception)
             {
-                if (sizeLess)
+                if (_sizeLess)
                 {
-                    dateSize = Size.Subtract(dateSize, new Size(20, 0));
-                    sizeLess = false;
+                    _dateSize = Size.Subtract(_dateSize, new Size(20, 0));
+                    _sizeLess = false;
                 }
-                dateTimeBirthDay.Size = dateSize;
+                dateTimeBirthDay.Size = _dateSize;
                 dateErrorProvider.SetIconAlignment(dateTimeBirthDay, ErrorIconAlignment.MiddleRight);
                 dateErrorProvider.SetIconPadding(dateTimeBirthDay, 2);
                 dateErrorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
