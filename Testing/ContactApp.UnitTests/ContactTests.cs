@@ -30,7 +30,7 @@ namespace ContactApp.UnitTests
             var contact = new Contact();
             var sourceName = "jaMeS";
 
-            // Assert
+            // Assertы
             NUnit.Framework.Assert.Throws<ArgumentException>(
                 () =>
                 {
